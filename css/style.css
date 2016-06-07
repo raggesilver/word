@@ -1,0 +1,39 @@
+
+@font-face {
+    font-family: tabFont;
+    src: url(Adequate-ExtraLight.ttf);
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.editor {
+  text-align: inherit;
+  width: 19cm;
+  min-height: 27cm;
+  padding: 2cm;
+  margin: auto;
+  display:block;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  border: none;
+}
+
+.toolbar {
+  text-align: center;
+}
+
+.toolbar button {
+  display: inline-block;
+}
+
+.toolbar select{
+  border: none;
+  background-color: white;
+}
