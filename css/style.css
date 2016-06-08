@@ -25,15 +25,82 @@ body::-webkit-scrollbar {
   border: none;
 }
 
-.toolbar {
-  text-align: center;
-}
-
-.toolbar button {
+.toolBar {
   display: inline-block;
+  position: fixed;
+  margin-left: 10%;
+  margin-right: 10%;
+  top: 0;
 }
 
-.toolbar select{
+.toolBtn {
   border: none;
+  width: 40px;
+  transition: .5s;
+  background-color: grey;
+}
+
+.toolBtn:hover {
   background-color: white;
 }
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: grey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    transition: .4s;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: white;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.btn {
+    color: black;
+    padding: 5px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: white;
+    transition: .5s;
+}
+
+.btn:hover{
+  background-color: grey;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

@@ -21,16 +21,20 @@
 
 <body>
 		<div class="toolBar">
-			<button><b>b</b></button>
-			<button><i>i</i></button>
-			<button><ins>u</ins></button>
-			<select>
-				<option>Align Left</option>
-				<option>Align Center</option>
-				<option>Align Right</option>
-				<option>Fill</option>
-			</select>
+			<button class="toolBtn" id="bold"><b>b</b></button><button class="toolBtn" id="italic"><i>i</i></button><button  class="toolBtn" id="underline"><ins>u</ins></button>
+			<button id="jl" class="toolBtn">jl</button><button id="jc" class="toolBtn">jc</button><button id="jr" class="toolBtn">jr</button><button id="jf" class="toolBtn">jf</button>
+			<div class="dropdown">
+				<button onclick="myFunction()" class="dropbtn">H</button>
+				<div id="myDropdown" class="dropdown-content">
+					<button class="btn" id="h1"><h1>Header 1</h1></button>
+					<button class="btn" id="h2"><h2>Header 2</h2></button>
+					<button class="btn" id="h3"><h3>Header 3</h3></button>
+					<button class="btn" id="p">Default</button>
+				</div>
+			</div>
 		</div>
+
+		<br/><br/>
 
 		<div id="editor" class="editor">
 			This was ment to be editable
