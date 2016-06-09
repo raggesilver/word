@@ -8,6 +8,6 @@ WYIWYG html editor written in Javascrip + HTML. Css is here to make life more be
 ## Features
 
 * Crappy Ctrl + S save function
-* Enven crappier Ctrl + O open function
+* Even crappier Ctrl + O open function
 * Not bad compatibility with text copied from LibreOffice (not tested with MS Office)
 * Basic text formating such as justifying, bold, italic, and underline
