@@ -125,14 +125,6 @@ function __open(){
   $("#openFileDialog").toggle("show");
   return;
 
-  var fs = require('fs');
-
-  var filepath = __dirname + "/" + "test.txt";
-  alert(filepath);
-
-  var text = fs.readFileSync(filepath);
-  document.getElementById("editor").innerHTML = text;
-
 }
 
 // Close the dropdown menu if the user clicks outside of it

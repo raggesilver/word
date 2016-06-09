@@ -26,11 +26,13 @@ body::-webkit-scrollbar {
 }
 
 .toolBar {
-  display: inline-block;
   position: fixed;
-  margin-left: 10%;
-  margin-right: 10%;
-  top: 0;
+  margin: auto;
+  padding: 5px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: white;
 }
 
 .toolBtn {
