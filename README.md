@@ -1,3 +1,3 @@
 # WYSIWYG
 
-Format: ![Alt Text](image.png)
+Sreenshot ![Alt Text](image.png)
