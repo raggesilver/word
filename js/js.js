@@ -49,6 +49,26 @@ $(function(){
     document.execCommand("justifyFull", false, false);
   });
 
+  $("#cblack").bind("click", function() {
+    document.execCommand("foreColor", false, "black");
+  });
+
+  $("#cred").bind("click", function() {
+    document.execCommand("foreColor", false, "red");
+  });
+
+  $("#cdarkcyan").bind("click", function() {
+    document.execCommand("foreColor", false, "darkcyan");
+  });
+
+  $("#cgreen").bind("click", function() {
+    document.execCommand("foreColor", false, "green");
+  });
+
+  $("#openFileCloseBtn").bind("click", function() {
+    $("#openFileDialog").hide();
+  });
+
   $(document).bind('keydown', function(event) {
     if (event.ctrlKey || event.metaKey) {
       switch (String.fromCharCode(event.which).toLowerCase()) {
@@ -74,6 +94,10 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
+function myFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+}
+
 function __save(){
   var fs = require('fs');
   var text = document.getElementById("editor").innerHTML;
@@ -97,6 +121,10 @@ function __save(){
 }
 
 function __open(){
+
+  $("#openFileDialog").toggle("show");
+  return;
+
   var fs = require('fs');
 
   var filepath = __dirname + "/" + "test.txt";
@@ -120,6 +148,8 @@ window.onclick = function(event) {
       }
     }
   }
+
+  if ($("#openFileDialog").is(":visible") && !(event.target.id == "openFileDialog" || $(event.target).parents("#openFileDialog").size())) $("#openFileDialog").toggle("show");
 }
 
 function toggleNoDistractionMode(){

@@ -99,8 +99,72 @@ body::-webkit-scrollbar {
   background-color: grey;
 }
 
+.btn2 {
+  border: none;
+  padding: 10px;
+}
+
+.btn2:hover {
+  transform: scale(1.2);
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+option:hover {
+  transform: scale(1.2);
+}
+
+#openFileDialog {
+  width: 40%;
+  height: 20%;
+  background-color: grey;
+  margin: auto;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  text-align: center;
+  vertical-align:middle;
+  display: table;
+}
+
+#filepathinput {
+  border: none;
+  border-bottom: 3px solid white;
+  background-color: transparent;
+  color: white;
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  display: inline-block;
+}
+
+#openFileBtn{
+  position: absolute;
+  bottom: 0;
+  background-color: lightgrey;
+  transition: .3s;
+}
+
+#openFileBtn:hover {
+  background-color: #555555;
+  color: white;
+  font-weight: bold;
+}
+
+#openFileCloseBtn{
+  background-color: red;
+  color: white;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border:none;
+}
+
+#openFileCloseBtn:hover {
+  transform: scale(1.1);
+}
