@@ -57,9 +57,13 @@ $(function(){
           __save();
           break;
         case 'o':
-            event.preventDefault();
-            __open();
-            break;
+          event.preventDefault();
+          __open();
+          break;
+        case 'd':
+          event.preventDefault();
+          toggleNoDistractionMode();
+          break;
         }
     }
   });
@@ -116,4 +120,12 @@ window.onclick = function(event) {
       }
     }
   }
+}
+
+function toggleNoDistractionMode(){
+  $(".toolBar").toggle("show");
+  var isDistractionActive = $('#editor').css('box-shadow') != null;
+  alert(isDistractionActive);
+  if (isDistractionActive) $('#editor').css('box-shadow', "");
+  else $('#editor').css('box-shadow', "0 0 0.5cm rgba(0, 0, 0, 0.3)");
 }
