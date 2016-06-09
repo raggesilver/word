@@ -3,7 +3,7 @@
     font-family: tabFont;
     src: url(Adequate-ExtraLight.ttf);
 }
- 
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -120,7 +120,7 @@ option:hover {
   transform: scale(1.2);
 }
 
-#openFileDialog {
+#openFileDialog, #saveFileDialog {
   width: 40%;
   height: 20%;
   background-color: grey;
@@ -132,31 +132,31 @@ option:hover {
   display: table;
 }
 
-#filepathinput {
+#filepathinput, #saveFileInput {
   border: none;
   border-bottom: 3px solid white;
   background-color: transparent;
   color: white;
   position: absolute;
-  margin: auto;
   text-align: center;
-  display: inline-block;
+  width: 100%;
+  left: 0;
 }
 
-#openFileBtn{
+#openFileBtn, #saveFileBtn{
   position: absolute;
   bottom: 0;
   background-color: lightgrey;
   transition: .3s;
 }
 
-#openFileBtn:hover {
+#openFileBtn:hover, #saveFileBtn:hover {
   background-color: #555555;
   color: white;
   font-weight: bold;
 }
 
-#openFileCloseBtn{
+#openFileCloseBtn, #saveFileCloseBtn{
   background-color: red;
   color: white;
   width: 40px;
@@ -167,6 +167,6 @@ option:hover {
   border:none;
 }
 
-#openFileCloseBtn:hover {
+#openFileCloseBtn:hover, #saveFileCloseBtn:hover {
   transform: scale(1.1);
 }

@@ -8,7 +8,7 @@
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/editor.js"></script>
 	<script src="js/save.js"></script>
-	<script src="js/open.js"></script> 
+	<script src="js/open.js"></script>
 
 	<script>if (window.module) module = window.module;</script>
 </head>
@@ -45,7 +45,9 @@
 				</div>
 			</div>
 
-			<button class="toolBtn" title="decrease font size"><small><b>a</b></small></button><button class="toolBtn" title="increase font size"><b>A</b></button>
+			<button id="undo" class="toolBtn" title="undo"><</button><button id="redo" class="toolBtn" title="redo">></button>
+			<button id="bulletPoints" class="toolBtn" title="undo">bp</button><button id="numberPoints" class="toolBtn" title="undo">np</button>
+
 		</div>
 
 		<br/><br/>
@@ -63,6 +65,13 @@
 			<input id="filepathinput" type="text" placeholder="full path to file"><br/>
 			<button id="openFileBtn" class="btn" onclick="openFile()">Open</button>
 			<button id="openFileCloseBtn"><b>X</b></button>
+		</div>
+
+		<div id="saveFileDialog" style="display: none;">
+			<br/><br/>
+			<input id="saveFileInput" type="text" placeholder="full path to save file"><br/>
+			<button id="saveFileBtn" class="btn" onclick="saveFile()">Save</button>
+			<button id="saveFileCloseBtn"><b>X</b></button>
 		</div>
 
 </body>

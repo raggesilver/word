@@ -69,6 +69,22 @@ $(function(){
     $("#openFileDialog").hide();
   });
 
+  $("#undo").bind("click", function(){
+    document.execCommand("undo", false, false);
+  });
+
+  $("#redo").bind("click", function(){
+    document.execCommand("redo", false, false);
+  });
+
+  $("#bulletPoints").bind("click", function(){
+    document.execCommand("insertUnorderedList", false, false);
+  });
+
+  $("#numberPoints").bind("click", function(){
+    document.execCommand("insertOrderedList", false, false);
+  });
+
   $(document).bind('keydown', function(event) {
     if (event.ctrlKey || event.metaKey) {
       switch (String.fromCharCode(event.which).toLowerCase()) {
@@ -99,7 +115,7 @@ function myFunction2() {
 }
 
 function __save(){
-  var fs = require('fs');
+  /*var fs = require('fs');
   var text = document.getElementById("editor").innerHTML;
   //alert(text);
   var filename = "test";
@@ -116,7 +132,10 @@ function __save(){
     }
 
     console.log("The file was saved!");
-  });
+  });*/
+
+  $("#saveFileDialog").toggle("show");
+  return;
 
 }
 
