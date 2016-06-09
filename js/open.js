@@ -17,3 +17,4 @@ function openFile(){
   document.getElementById("editor").innerHTML = text;
 
 }
+ 
