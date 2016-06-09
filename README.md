@@ -1,7 +1,7 @@
 # WYSIWYG
 
 WYIWYG html editor written in Javascrip + HTML. Css is here to make life more beautiful.
-
+ 
 
 **Sreenshot:** ![Alt Text](image.png)
 
