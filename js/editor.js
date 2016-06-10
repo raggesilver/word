@@ -134,8 +134,13 @@ function __save(){
     console.log("The file was saved!");
   });*/
 
-  $("#saveFileDialog").toggle("show");
-  return;
+  if (needFilename() == true) {
+
+    $("#saveFileDialog").toggle("show");
+
+  } else {
+    saveFile();
+  }
 
 }
 

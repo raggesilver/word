@@ -3,7 +3,11 @@ var $ = require('jquery');
 var filepath;
 var fs = require('fs');
 
- function saveFile(){
+function needFilename(){
+  return filepath == "" || filepath == null;
+}
+
+function saveFile(){
    if (filepath != "") {
 
      filepath = document.getElementById('saveFileInput').value;
@@ -20,9 +24,9 @@ var fs = require('fs');
 
    fs.writeFile(filepath, text, function(err) {
      if(err) {
-         return alert(err);
+       return alert(err);
      }
    });
 
-     document.title = "Electron WYSIWYG - " + filepath;
+   document.title = "Electron WYSIWYG - " + filepath;
 }
