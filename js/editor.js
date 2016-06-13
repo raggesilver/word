@@ -100,6 +100,10 @@ $(function(){
           event.preventDefault();
           toggleNoDistractionMode();
           break;
+        case 'p':
+          event.preventDefault();
+          _printFile();
+          break;
         }
     }
   });
@@ -175,3 +179,18 @@ function toggleNoDistractionMode(){
   if (isDistractionActive) $('#editor').css('box-shadow', "");
   else $('#editor').css('box-shadow', "0 0 0.5cm rgba(0, 0, 0, 0.3)");
 }
+
+document.ondrop = function (e) {
+          e.preventDefault();
+
+          for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+            // console.log(e.dataTransfer.files[i].path);
+            var dragFilepath = e.dataTransfer.files[i].path;
+            if (dragFilepath.indexOf(".txt") > -1){
+              openViaPath(dragFilepath);
+            } else {
+              alert("File type unsupported. If it is a picture, please use ctrl+c and ctrl+v or wait for a new decent version.");
+            }
+          }
+          return false;
+        };

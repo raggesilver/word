@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "postinstall": "install-app-deps",
-    "build": "electron-packager . MyApp --platform=linux --arch=x64 --version=0.27.2"
+    "build": "electron-packager . Node --platform=linux --arch=x86_64"
   },
   "author": "",
   "license": "ISC",

@@ -9,6 +9,7 @@
 	<script src="js/editor.js"></script>
 	<script src="js/save.js"></script>
 	<script src="js/open.js"></script>
+	<script src="js/print.js"></script>
 
 	<script>if (window.module) module = window.module;</script>
 </head>
@@ -46,7 +47,7 @@
 			</div>
 
 			<button id="undo" class="toolBtn" title="undo"><</button><button id="redo" class="toolBtn" title="redo">></button>
-			<button id="bulletPoints" class="toolBtn" title="undo">bp</button><button id="numberPoints" class="toolBtn" title="undo">np</button>
+			<button id="bulletPoints" class="toolBtn" title="bullet points">bp</button><button id="numberPoints" class="toolBtn" title="number points">np</button>
 
 		</div>
 
@@ -58,7 +59,7 @@
 
 		<br/><br/>
 
-		<p style="text-align: center;">~By Paulo~</p>
+		<p style="text-align: center;" id="thankNote">~By Paulo~</p>
 
 		<div id="openFileDialog" style="display: none;">
 			<br/><br/>
