@@ -23,6 +23,7 @@ body::-webkit-scrollbar {
   box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
   word-wrap: break-word;
   border: none;
+  outline: 0px solid transparent;
 }
 
 .toolBar {

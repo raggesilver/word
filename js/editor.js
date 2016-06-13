@@ -2,6 +2,8 @@ var $ = require('jquery');
 
 var $editor = $("#editor");
 
+var isOnFocusMode = false;
+
 $(function(){
   $(editor).prop('contentEditable', true);
 
@@ -173,24 +175,30 @@ window.onclick = function(event) {
 }
 
 function toggleNoDistractionMode(){
-  $(".toolBar").toggle("show");
-  var isDistractionActive = $('#editor').css('box-shadow') != null;
-  alert(isDistractionActive);
-  if (isDistractionActive) $('#editor').css('box-shadow', "");
-  else $('#editor').css('box-shadow', "0 0 0.5cm rgba(0, 0, 0, 0.3)");
+  if (isOnFocusMode){
+    $(".toolBar").show();
+    $('.editor').css('box-shadow', "0 0 0.5cm rgba(0, 0, 0, 0.3)");
+  } else {
+    $(".toolBar").hide();
+    $('.editor').css("box-shadow", "0 0 0 rgba(0,0,0,0)");
+  }
+
+  isOnFocusMode = !isOnFocusMode;
 }
 
 document.ondrop = function (e) {
-          e.preventDefault();
+  e.preventDefault();
 
-          for (var i = 0; i < e.dataTransfer.files.length; ++i) {
-            // console.log(e.dataTransfer.files[i].path);
-            var dragFilepath = e.dataTransfer.files[i].path;
-            if (dragFilepath.indexOf(".txt") > -1){
-              openViaPath(dragFilepath);
-            } else {
-              alert("File type unsupported. If it is a picture, please use ctrl+c and ctrl+v or wait for a new decent version.");
-            }
-          }
-          return false;
-        };
+  for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+    // console.log(e.dataTransfer.files[i].path);
+    var dragFilepath = e.dataTransfer.files[i].path;
+    if (dragFilepath.indexOf(".txt") > -1){
+      openViaPath(dragFilepath);
+    } else {
+      alert("File type unsupported. If it is a picture, please use ctrl+c and ctrl+v or wait for a new decent version.");
+    }
+  }
+  return false;
+};
+
+function isItOnFocusMode() {return isOnFocusMode;}

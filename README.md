@@ -19,3 +19,4 @@ WYIWYG html editor written in Javascrip + HTML.
 #### v0.0.0.1
 
 Added Drag and Drop Support. (totally insecure since it does not ask to save the current document before opening the droped file)
+Incomming custom css file chooser.
