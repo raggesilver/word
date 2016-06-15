@@ -46,6 +46,16 @@ button:focus {
   outline: none
 }
 
+.menuBtn {
+  position: fixed;
+  left: 3px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  padding 5px;
+  display: inline-block;
+}
+
 .closeBtn {
   position: fixed;
   right: 3px;
@@ -76,7 +86,6 @@ button:focus {
 
 .toolBtn {
   border: none;
-  width: 40px;
   transition: .5s;
   background-color: grey;
 }

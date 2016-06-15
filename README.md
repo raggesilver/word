@@ -33,3 +33,6 @@ Incomming custom css file chooser.
 
 Frameless Window.
 
+## Credits
+
+Icon pack by [Icons8](https://icons8.com)
