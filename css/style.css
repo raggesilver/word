@@ -42,6 +42,10 @@ button {
   min-width: 30px;
 }
 
+button:active {
+  transform: scale(.9);
+}
+
 button:focus {
   outline: none
 }
@@ -68,7 +72,7 @@ button:focus {
 
 .closeBtn:hover {
   transform: scale(1.2);
-  background-color: red;
+  /*background-color: red;*/
   color: white;
   font-weight: bold;
 }
@@ -86,17 +90,17 @@ button:focus {
 
 .toolBtn {
   border: none;
-  transition: .5s;
-  background-color: grey;
+  transition: .4s;
+  background-color: white;
 }
 
 .toolBtn:hover {
-  background-color: white;
+  background-color: lightgrey;
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: grey;
+    background-color: white;
     color: black;
     border: none;
     cursor: pointer;
@@ -106,7 +110,7 @@ button:focus {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-    background-color: white;
+    background-color: lightgrey;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -146,7 +150,7 @@ button:focus {
 }
 
 .btn:hover{
-  background-color: grey;
+  background-color: lightgrey;
 }
 
 .btn2 {
@@ -159,7 +163,7 @@ button:focus {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {background-color: lightgrey}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}

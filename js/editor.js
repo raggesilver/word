@@ -228,3 +228,33 @@ function useToolbarBackgorund(path, use){
   if (use) $(".headerBar").css("background-image", "url('" + path +"')");
   else $(".headerBar").css("background-image", "");
 }
+
+var floatOpen = false;
+var lastText = null;
+var text = null;
+
+$(window).bind("mouseup", function(e){
+
+  if (floatOpen){
+    if ($("#floatFormatBox").is(":visible") && !(event.target.id == "floatFormatBox" || $(event.target).parents("#floatFormatBox").size())) $("#floatFormatBox").hide();
+    floatOpen = false;
+  }
+
+  if (window.getSelection) text = window.getSelection().toString();
+  else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
+  else return;
+
+  if (text == "" || text == null) return;
+  if (lastText == text) {
+    floatOpen = false;
+    $("#floatFormatBox").hide();
+    return;
+  }
+  
+  lastText = text;
+
+  $("#floatFormatBox").css( {position:"absolute", top:e.pageY, left: e.pageX});
+
+  $("#floatFormatBox").show();
+  floatOpen = true;
+});
