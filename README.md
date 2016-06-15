@@ -1,9 +1,9 @@
 # WYSIWYG
 
 WYIWYG html editor written in Javascrip + HTML.
- 
 
-**Sreenshot:** ![Alt Text](screenshots/preview.png)
+
+**Preview:** ![Alt Text](screenshots/preview.png)
 
 ## Features
 
@@ -13,11 +13,12 @@ WYIWYG html editor written in Javascrip + HTML.
 * Standard text formatting functions
 * Print
 * Drag and Drop file oppening
+* No distraction mode
 
 ## Changelog
 
 #### v0.0.0.1
 
 Added Drag and Drop Support. (totally insecure since it does not ask to save the current document before opening the droped file)
-
 Incomming custom css file chooser.
+Frameless Window

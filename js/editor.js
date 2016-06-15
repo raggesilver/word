@@ -2,7 +2,7 @@ var $ = require('jquery');
 
 var $editor = $("#editor");
 
-var isOnFocusMode = false;
+var isOnFocusMode = false; // create a method to read this from a "settings.json" file
 
 $(function(){
   $(editor).prop('contentEditable', true);
@@ -71,6 +71,10 @@ $(function(){
     $("#openFileDialog").hide();
   });
 
+  $("#saveFileCloseBtn").bind("click", function() {
+    $("#saveFileDialog").hide();
+  });
+
   $("#undo").bind("click", function(){
     document.execCommand("undo", false, false);
   });
@@ -105,6 +109,22 @@ $(function(){
         case 'p':
           event.preventDefault();
           _printFile();
+          break;
+        case '1':
+          event.preventDefault();
+          document.execCommand("formatBlock", false, "h1");
+          break;
+        case '2':
+          event.preventDefault();
+          document.execCommand("formatBlock", false, "h2");
+          break;
+        case '3':
+          event.preventDefault();
+          document.execCommand("formatBlock", false, "h3");
+          break;
+        case '0':
+          event.preventDefault();
+          document.execCommand("formatBlock", false, "p");
           break;
         }
     }
@@ -172,6 +192,7 @@ window.onclick = function(event) {
   }
 
   if ($("#openFileDialog").is(":visible") && !(event.target.id == "openFileDialog" || $(event.target).parents("#openFileDialog").size())) $("#openFileDialog").toggle("show");
+  if ($("#saveFileDialog").is(":visible") && !(event.target.id == "saveFileDialog" || $(event.target).parents("#saveFileDialog").size())) $("#saveFileDialog").toggle("show");
 }
 
 function toggleNoDistractionMode(){
@@ -202,3 +223,8 @@ document.ondrop = function (e) {
 };
 
 function isItOnFocusMode() {return isOnFocusMode;}
+
+function useToolbarBackgorund(path, use){
+  if (use) $(".headerBar").css("background-image", "url('" + path +"')");
+  else $(".headerBar").css("background-image", "");
+}
