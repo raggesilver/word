@@ -3,7 +3,7 @@
 WYIWYG html editor written in Javascrip + HTML.
 
 
-**Preview:** ![Alt Text](screenshots/preview.png)
+**Preview:** ![Alt Text](screenshots/preview-v0.0.2.png)
 
 ## Features
 
