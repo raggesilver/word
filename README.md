@@ -17,7 +17,13 @@ WYIWYG html editor written in Javascrip + HTML.
 
 ## Changelog
 
-#### v0.0.0.1
+#### v0.0.2
+
+Change in the visual
+Future toolbar background image
+Shortcut for text formatting (h1, h2, h3)
+
+#### v0.0.1
 
 Added Drag and Drop Support. (totally insecure since it does not ask to save the current document before opening the droped file)
 Incomming custom css file chooser.
