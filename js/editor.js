@@ -23,15 +23,15 @@ $(function(){
     document.execCommand("formatBlock", false, "p");
   });
 
-  $("#bold").bind("click", function(){
+  $("#bold, #bold2").bind("click", function(){
     document.execCommand("bold", false, false);
   });
 
-  $("#italic").bind("click", function(){
+  $("#italic, #italic2").bind("click", function(){
     document.execCommand("italic", false, false);
   });
 
-  $("#underline").bind("click", function(){
+  $("#underline, #underline2").bind("click", function(){
     document.execCommand("underline", false, false);
   });
 
@@ -92,6 +92,7 @@ $(function(){
   });
 
   $(document).bind('keydown', function(event) {
+    $("#floatFormatBox").hide();
     if (event.ctrlKey || event.metaKey) {
       switch (String.fromCharCode(event.which).toLowerCase()) {
         case 's':
@@ -235,10 +236,12 @@ var text = null;
 
 $(window).bind("mouseup", function(e){
 
-  if (floatOpen){
-    if ($("#floatFormatBox").is(":visible") && !(event.target.id == "floatFormatBox" || $(event.target).parents("#floatFormatBox").size())) $("#floatFormatBox").hide();
+  if (floatOpen){ // if clicked outside
+    if ($("#floatFormatBox").is(":visible") && !(event.target.id == "floatFormatBox" || $(event.target).parents("#floatFormatBox").size())) {$("#floatFormatBox").hide();}
     floatOpen = false;
   }
+
+  if ($("#filepathinput").is(":focus") || $("#saveFileInput").is(":focus")) return; // if typing file path
 
   if (window.getSelection) text = window.getSelection().toString();
   else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
@@ -248,9 +251,10 @@ $(window).bind("mouseup", function(e){
   if (lastText == text) {
     floatOpen = false;
     $("#floatFormatBox").hide();
+    lastText = ""; // word unselected, so text is empty now
     return;
   }
-  
+
   lastText = text;
 
   $("#floatFormatBox").css( {position:"absolute", top:e.pageY, left: e.pageX});
@@ -258,3 +262,11 @@ $(window).bind("mouseup", function(e){
   $("#floatFormatBox").show();
   floatOpen = true;
 });
+
+function clearSelection() {
+  if ( document.selection ) {
+    document.selection.empty();
+  } else if ( window.getSelection ) {
+    window.getSelection().removeAllRanges();
+  }
+}
