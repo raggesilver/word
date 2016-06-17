@@ -4,6 +4,8 @@ var $editor = $("#editor");
 
 var isOnFocusMode = false; // create a method to read this from a "settings.json" file
 
+var jsPDF = require('jspdf');
+
 $(function(){
   $(editor).prop('contentEditable', true);
 
@@ -97,11 +99,13 @@ $(function(){
       switch (String.fromCharCode(event.which).toLowerCase()) {
         case 's':
           event.preventDefault();
-          __save();
+          //__save();
+          testSave(); // new system save file dialog
           break;
         case 'o':
           event.preventDefault();
-          __open();
+          //__open();
+          testOpen(); // new system file chooser dialog
           break;
         case 'd':
           event.preventDefault();
@@ -242,6 +246,9 @@ $(window).bind("mouseup", function(e){
   }
 
   if ($("#filepathinput").is(":focus") || $("#saveFileInput").is(":focus")) return; // if typing file path
+  if ($(".toolBar").is(":focus") || $(".toolBtn").is(":focus") || $(".dropdown").is(":focus") || $(".btn").is(":focus") || $(".myDropdown2").is(":focus") || $(".btn2").is(":focus")) return;
+  // something is wrong in the if above
+
 
   if (window.getSelection) text = window.getSelection().toString();
   else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
@@ -270,3 +277,41 @@ function clearSelection() {
     window.getSelection().removeAllRanges();
   }
 }
+
+function testAlert(){
+  alert("yey");
+}
+
+var quitTimes = 0;
+
+window.onbeforeunload = function(e) {
+    if (needFilename() == true && quitTimes > 0) {
+      alert("You haven't saved your work. Sure you wanna quit? Quit again for yes");
+      quitTimes++;
+      e.preventDefault();
+    }
+};
+
+function generatePDF(){
+  var doc = new jsPDF();
+  var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+  };
+
+  doc.fromHTML($('#editor').html(), 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+    });
+  doc.save('sample-file.pdf');
+}
+
+$(function(){
+  $("#advTools").hide();
+
+  $("#menuButton").bind("click", function(){
+    if($("#advTools").is(":visible")) $("#advTools").hide(100);
+    else $("#advTools").show(100);
+  });
+});

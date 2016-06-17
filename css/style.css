@@ -90,7 +90,7 @@ button:focus {
 
 .toolBtn {
   border: none;
-  transition: .4s;
+  transition: .3s;
   background-color: white;
 }
 
@@ -105,7 +105,7 @@ button:focus {
     border: none;
     cursor: pointer;
     width: 40px;
-    transition: .4s;
+    transition: .3s;
 }
 
 /* Dropdown button on hover & focus */
@@ -146,7 +146,7 @@ button:focus {
     width: 100%;
     border: none;
     background-color: white;
-    transition: .5s;
+    transition: .3s;
 }
 
 .btn:hover{
