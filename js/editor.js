@@ -7,6 +7,29 @@ var isOnFocusMode = false; // create a method to read this from a "settings.json
 var jsPDF = require('jspdf');
 
 $(function(){
+  var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+  if (isMac) {
+      $(".closeBtn").css({
+        "position": "fixed",
+        "left": "3px"
+      });
+      $("#menuButton, .menuBtn").css({
+        "position": "fixed",
+        "right": "3px"
+      });
+    } else {
+      $(".closeBtn").css({
+        "position": "fixed",
+        "right": "3px"
+      });
+      $("#menuButton, .menuBtn").css({
+        "position": "fixed",
+        "left": "3px"
+      });
+    }
+});
+
+$(function(){
   $(editor).prop('contentEditable', true);
 
   $("#h1").bind("click", function(){
@@ -309,9 +332,41 @@ function generatePDF(){
 
 $(function(){
   $("#advTools").hide();
+  $("#advFormatTools").hide();
 
   $("#menuButton").bind("click", function(){
     if($("#advTools").is(":visible")) $("#advTools").hide(100);
     else $("#advTools").show(100);
   });
+
+});
+
+function toggleAdvFormat(){
+  if($("#advFormatTools").is(":visible"))
+  {
+    $("#advFormatTools").hide(100);
+    $("#advFormatToolsBtnImg").css("-webkit-transform", "rotate(360deg)");
+
+  } else {
+    $("#advFormatTools").show(100);
+    $("#advFormatToolsBtnImg").css("-webkit-transform", "rotate(180deg)");
+  }
+}
+
+$(function(){
+  $("#fontFamilySelection").change(function(){
+    document.execCommand("fontName", false, $("#fontFamilySelection").val());
+  });
+
+  $("#fontSizeBox").change(function(){
+    document.execCommand("foreSize", false, $("#fontSizeBox").val());
+  });
+
+  $(editor).on("mouseup", function(){
+    var font = document.queryCommandValue("FontName");
+    font = font.replace("'", "").replace("'", "");
+    $("#fontFamilySelection").val(font);
+    var size = document.queryCommandValue("FontSize");
+    $("#fontSizeBox").val(size);
+  })
 });

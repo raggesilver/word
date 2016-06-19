@@ -36,6 +36,10 @@ body::-webkit-scrollbar {
   min-height: 30px;
 }
 
+select {
+  -webkit-app-region: no-drag;
+}
+
 button {
   -webkit-app-region: no-drag;
   min-height: 30px;
@@ -51,8 +55,8 @@ button:focus {
 }
 
 .menuBtn {
-  position: fixed;
-  left: 3px;
+  /*position: fixed;
+  left: 3px;*/
   text-align: center;
   border: none;
   background-color: transparent;
@@ -61,8 +65,8 @@ button:focus {
 }
 
 .closeBtn {
-  position: fixed;
-  right: 3px;
+  /*position: fixed;
+  right: 3px;*/
   text-align: center;
   border: none;
   background-color: transparent;
@@ -75,6 +79,42 @@ button:focus {
   /*background-color: red;*/
   color: white;
   font-weight: bold;
+}
+
+.advFormatTools {
+  margin: 0;
+  border: none;
+}
+
+#advFormatToolsBtnImg{
+  -webkit-transition-duration: 0.3s;
+}
+
+
+.fontSelection {
+  height: auto;
+  border: 1px solid black;
+  display: inline-block;
+  background-color: transparent;
+  padding: 10px;
+  padding-bottom: 0;
+  text-align: center;
+  margin: 0;
+  outline: none;
+  font-size: 14px;
+}
+
+#fontSizeBox{
+  height: auto;
+  border: 1px solid black;
+  display: inline-block;
+  background-color: transparent;
+  padding: 10px;
+  padding-bottom: 0;
+  text-align: center;
+  margin: 0;
+  outline: none;
+  font-size: 14px;
 }
 
 .toolBar {
