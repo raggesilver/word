@@ -266,7 +266,11 @@ var text = null;
 $(window).bind("mouseup", function(e){
 
   if (floatOpen){ // if clicked outside
-    if ($("#floatFormatBox").is(":visible") && !(event.target.id == "floatFormatBox" || $(event.target).parents("#floatFormatBox").size())) {$("#floatFormatBox").hide();}
+
+    var container = $("#floatFormatBox");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) {$("#floatFormatBox").hide();}
     floatOpen = false;
   }
 
