@@ -1,10 +1,6 @@
 # WYSIWYG
 
-<<<<<<< HEAD
-WYIWYG html editor written in Javascrip + HTML. (Testing)
-=======
 WYIWYG html editor written in Javascrip + HTML.
->>>>>>> cfad1db0d5106dda6fc739af94ed97446e5b6276
 
 
 **Preview:** ![Alt Text](screenshots/preview-v0.0.4.png)

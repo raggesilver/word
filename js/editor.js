@@ -261,6 +261,8 @@ var floatOpen = false;
 var lastText = null;
 var text = null;
 
+// Float box opening function
+
 $(window).bind("mouseup", function(e){
 
   if (floatOpen){ // if clicked outside
@@ -271,7 +273,6 @@ $(window).bind("mouseup", function(e){
   if ($("#filepathinput").is(":focus") || $("#saveFileInput").is(":focus")) return; // if typing file path
   if ($(".toolBar").is(":focus") || $(".toolBtn").is(":focus") || $(".dropdown").is(":focus") || $(".btn").is(":focus") || $(".myDropdown2").is(":focus") || $(".btn2").is(":focus")) return;
   // something is wrong in the if above
-
 
   if (window.getSelection) text = window.getSelection().toString();
   else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
@@ -301,9 +302,8 @@ function clearSelection() {
   }
 }
 
-function testAlert(){
-  alert("yey");
-}
+// Ask for saving before closing
+// PLEASE IMPROVE THIS IMEDIATELY
 
 var quitTimes = 0;
 
@@ -314,6 +314,8 @@ window.onbeforeunload = function(e) {
       e.preventDefault();
     }
 };
+
+// PDF generator (not working)
 
 function generatePDF(){
   var doc = new jsPDF();
@@ -330,6 +332,8 @@ function generatePDF(){
   doc.save('sample-file.pdf');
 }
 
+// menu button on click
+
 $(function(){
   $("#advTools").hide();
   $("#advFormatTools").hide();
@@ -340,6 +344,8 @@ $(function(){
   });
 
 });
+
+// Toggle advanced formatting tools (font family, size...)
 
 function toggleAdvFormat(){
   if($("#advFormatTools").is(":visible"))
@@ -352,6 +358,8 @@ function toggleAdvFormat(){
     $("#advFormatToolsBtnImg").css("-webkit-transform", "rotate(180deg)");
   }
 }
+
+ // Font selector
 
 $(function(){
   $("#fontFamilySelection").change(function(){
