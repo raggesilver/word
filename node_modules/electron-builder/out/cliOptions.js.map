@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "cliOptions.js",
+  "sourceRoot": "",
+  "sources": [
+    "../src/cliOptions.ts"
+  ],
+  "names": [],
+  "mappings": ";;AAAA,wBAA0B,AAAO,AACjC,AAAC;AAAD,MAAO,AAAK,gBAAW,AAAO,AAAC;AAE/B;AACE,AAAM,iBACH,AAAO,AAAE,UACT,AAAM,OAAC,AAAK;AACX,AAAK,eAAE,AAAG;AACV,AAAQ,kBAAE,AAAgB;AAC1B,AAAI,cAAE,AAAO,AACd,AAAC;AAJa,KAFV,AAAK,EAOT,AAAM,OAAC,AAAO;AACb,AAAK,eAAE,AAAG;AACV,AAAQ,kBAAE,AAAiB;AAC3B,AAAI,cAAE,AAAO,AACd,AAAC;AAJe,OAKhB,AAAM,OAAC,AAAK;AACX,AAAK,eAAE,CAAC,AAAG,KAAE,AAAS,AAAC;AACvB,AAAQ,kBAAE,AAAmB;AAC7B,AAAI,cAAE,AAAO,AACd,AAAC;AAJa,OAKd,AAAM,OAAC,AAAK;AACX,AAAQ,kBAAE,AAAe;AACzB,AAAI,cAAE,AAAS,AAChB,AAAC;AAHa,OAId,AAAM,OAAC,AAAM;AACZ,AAAQ,kBAAE,AAAgB;AAC1B,AAAI,cAAE,AAAS,AAChB,AAAC;AAHc,OASf,AAAM,OAAC,AAAS;AACf,AAAK,eAAE,AAAG;AACV,AAAQ,kBAAE,gDAA+C,QAAS,UAAC,AAAuB,AAAC,0BAAE;AAC7F,AAAO,iBAAE,CAAC,AAAO,SAAE,AAAc,gBAAE,AAAQ,UAAE,AAAO,AAAC,AACtD,AAAC;AAJiB,OAKlB,AAAM,OAAC,AAAU;AAChB,AAAO,iBAAE,CAAC,AAAK,OAAE,AAAK,OAAE,AAAO,SAAE,AAAQ,UAAE,AAAO,SAAE,AAAK,AAAC,AAC3D,AAAC;AAFkB,OAGnB,AAAM,OAAC,AAAM;AACZ,AAAO,iBAAE,CAAC,AAAM,QAAE,AAAK,OAAE,AAAK,AAAC,AAChC,AAAC;AAFc,OAGf,AAAM,AAAE,SACR,AAAI,AAAE,OACN,AAAM,OAAC,kBAAiB,QAAS,UAAC,AAAuD,AAAC,0DAAE,AAAC,AAClG;AAAC;AA7Ce,QAAW,cA6C1B",
+  "sourcesContent": [
+    "import { underline } from \"chalk\"\nimport yargs = require(\"yargs\")\n\nexport function createYargs(): any {\n  return yargs\n    .version()\n    .option(\"osx\", {\n      alias: \"o\",\n      describe: \"Build for OS X\",\n      type: \"array\",\n    })\n    .option(\"linux\", {\n      alias: \"l\",\n      describe: \"Build for Linux\",\n      type: \"array\",\n    })\n    .option(\"win\", {\n      alias: [\"w\", \"windows\"],\n      describe: \"Build for Windows\",\n      type: \"array\",\n    })\n    .option(\"x64\", {\n      describe: \"Build for x64\",\n      type: \"boolean\",\n    })\n    .option(\"ia32\", {\n      describe: \"Build for ia32\",\n      type: \"boolean\",\n    })\n    // .option(\"target\", {\n    //   alias: \"t\",\n    //   describe: \"Target package types\",\n    //   choices: commonTargets,\n    // })\n    .option(\"publish\", {\n      alias: \"p\",\n      describe: `Publish artifacts (to GitHub Releases), see ${underline(\"https://goo.gl/WMlr4n\")}`,\n      choices: [\"onTag\", \"onTagOrDraft\", \"always\", \"never\"],\n    })\n    .option(\"platform\", {\n      choices: [\"osx\", \"win\", \"linux\", \"darwin\", \"win32\", \"all\"],\n    })\n    .option(\"arch\", {\n      choices: [\"ia32\", \"x64\", \"all\"],\n    })\n    .strict()\n    .help()\n    .epilog(`Project home: ${underline(\"https://github.com/electron-userland/electron-builder\")}`)\n}\n"
+  ]
+}
