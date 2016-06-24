@@ -1,6 +1,6 @@
 # WYSIWYG
 
-WYIWYG html editor written in Javascrip + HTML.
+WYIWYG html editor written in Javascrip + HTML. 
 
 
 **Preview:** ![Alt Text](screenshots/preview-v0.0.4.png)
