@@ -1,4 +1,5 @@
 var $ = require('jquery');
+require('jquery-ui');
 
 var $editor = $("#editor");
 
@@ -206,8 +207,11 @@ function __open(){
 }
 
 // Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+window.onclick = function(e) {
+  var container = $(".dropdown-content")[0];
+
+  if (!container.is(e.target) // if the target of the click isn't the container...
+      && container.has(e.target).length === 0)  {
 
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
@@ -311,11 +315,11 @@ function clearSelection() {
 
 var quitTimes = 0;
 
-window.onbeforeunload = function(e) {
-    if (needFilename() == true && quitTimes > 0) {
-      alert("You haven't saved your work. Sure you wanna quit? Quit again for yes");
+window.onbeforeunload = confirmExit;
+function confirmExit() {
+    if (needFilename() == true && quitTimes <= 0) {
+      return("You haven't saved your work. Sure you wanna quit? Quit again for yes");
       quitTimes++;
-      e.preventDefault();
     }
 };
 
@@ -343,8 +347,8 @@ $(function(){
   $("#advFormatTools").hide();
 
   $("#menuButton").bind("click", function(){
-    if($("#advTools").is(":visible")) $("#advTools").hide(100);
-    else $("#advTools").show(100);
+    if($("#advTools").is(":visible")) $("#advTools").hide(150);
+    else $("#advTools").show(150);
   });
 
 });
@@ -382,3 +386,6 @@ $(function(){
     $("#fontSizeBox").val(size);
   })
 });
+
+
+$('.editor').wysiwygResize({selector: "div, td, h1, h3"});

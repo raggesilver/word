@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: tabFont;
-    src: url(Adequate-ExtraLight.ttf);
+    src: url(Adequate-ExtraLight.ttf), format(truetype);
 }
 
 body {
@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
   box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
   word-wrap: break-word;
   border: none;
-  outline: 0px solid transparent;
+  outline: 0 solid transparent;
 }
 
 .headerBar {
@@ -51,7 +51,7 @@ button:active {
 }
 
 button:focus {
-  outline: none
+  outline: 0 solid transparent;
 }
 
 .menuBtn {
@@ -60,7 +60,6 @@ button:focus {
   text-align: center;
   border: none;
   background-color: transparent;
-  padding 5px;
   display: inline-block;
 }
 
@@ -70,7 +69,6 @@ button:focus {
   text-align: center;
   border: none;
   background-color: transparent;
-  padding 5px;
   display: inline-block;
 }
 
@@ -86,7 +84,7 @@ button:focus {
   border: none;
 }
 
-#advFormatToolsBtnImg{
+#advFormatToolsBtnImg {
   -webkit-transition-duration: 0.3s;
 }
 
@@ -132,6 +130,7 @@ button:focus {
   border: none;
   transition: .3s;
   background-color: white;
+  min-width: 40px;
 }
 
 .toolBtn:hover {
@@ -165,7 +164,7 @@ button:focus {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /* Links inside the dropdown */
