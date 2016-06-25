@@ -208,23 +208,20 @@ function __open(){
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(e) {
-  var container = $(".dropdown-content")[0];
 
-  if (!container.is(e.target) // if the target of the click isn't the container...
-      && container.has(e.target).length === 0)  {
+  var dropdowns = document.getElementsByClassName("dropdown-content");
+  var i;
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+  for (i = 0; i < dropdowns.length; i++) {
+    var dpdown = dropdowns[i];
+    if (dpdown.style.visibility !== 'null' && dpdown.style.display !== 'none'){
+      var container = $('.dropdown-content');
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0 && !$(".dropbtn").is(e.target))  {
+            dpdown.classList.remove('show');
       }
     }
   }
-
-  if ($("#openFileDialog").is(":visible") && !(event.target.id == "openFileDialog" || $(event.target).parents("#openFileDialog").size())) $("#openFileDialog").toggle("show");
-  if ($("#saveFileDialog").is(":visible") && !(event.target.id == "saveFileDialog" || $(event.target).parents("#saveFileDialog").size())) $("#saveFileDialog").toggle("show");
 }
 
 function toggleNoDistractionMode(){

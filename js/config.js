@@ -1,8 +1,6 @@
-var fs = require('fs');
-
 var filename = "style.css";
 
-if (fs.stat("./css/custom.css")) filename = "custom.css";
+if(fs.existsSync(__dirname + '/css/custom.css')) filename = "custom.css";
 
 var ls = document.createElement('link');
 ls.rel="stylesheet";

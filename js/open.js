@@ -43,14 +43,14 @@ function testOpen(){
    var title = _title[_title.length - 1];
    document.title = "Electron WYSIWYG - " + title;
 
-   var f = fs.open("./lastfile.txt", "w+");
-   f.writeFile("./lastfile.txt", fileNames[0],function(err){if(err)return alert(err);});
+   var f = fs.open("lastfile.txt", "w+");
+   f.writeFile("lastfile.txt", fileNames[0],function(err){if(err)return alert(err);});
  });
 }
 
 $(function(){
-  if(fs.exists("./lastfile.txt")) {
-    var f = fs.readFileSync("./lastfile.txt");
+  if(fs.exists("lastfile.txt")) {
+    var f = fs.readFileSync("lastfile.txt");
     var text = fs.readFileSync(f);
     document.getElementById("editor").innerHTML = text;
 

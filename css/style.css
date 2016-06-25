@@ -9,8 +9,8 @@ body {
   padding: 0;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar {
+    display: none;
 }
 
 .editor {
@@ -24,6 +24,10 @@ body::-webkit-scrollbar {
   word-wrap: break-word;
   border: none;
   outline: 0 solid transparent;
+}
+
+.topBar {
+  overflow: hidden;
 }
 
 .headerBar {
@@ -260,4 +264,12 @@ option:hover {
 
 #openFileCloseBtn:hover, #saveFileCloseBtn:hover {
   transform: scale(1.1);
+}
+
+#floatFormatBox {
+  opacity: .3;
+}
+
+#floatFormatBox:hover {
+  opacity: 1;
 }
