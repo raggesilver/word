@@ -117,9 +117,21 @@ $(function(){
     document.execCommand("insertOrderedList", false, false);
   });
 
+  $("#settingsBtn").bind("click", function(){
+    $(".settingsDiv").toggle("show");
+  });
+
+  $("#settingsDivCloseBtn").bind("click", function(){
+    $(".settingsDiv").hide();
+  });
+
+var zoom = 1.0; // put this and the key events in a better place (separate from general shortcuts)
+
   $(document).bind('keydown', function(event) {
     $("#floatFormatBox").hide();
     if (event.ctrlKey || event.metaKey) {
+      if(event.keyCode == '189') {$("#editor").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom - 0.1; }
+      if(event.keyCode == '187') {$("#editor").animate({ 'zoom': (zoom + 0.1) }, 50); zoom = zoom + 0.1; }
       switch (String.fromCharCode(event.which).toLowerCase()) {
         case 's':
           event.preventDefault();
@@ -154,6 +166,10 @@ $(function(){
         case '0':
           event.preventDefault();
           document.execCommand("formatBlock", false, "p");
+          break;
+        case 't':
+          event.preventDefault();
+          testResize();
           break;
         }
     }
@@ -384,5 +400,9 @@ $(function(){
   })
 });
 
-
-$('.editor').wysiwygResize({selector: "div, td, h1, h3"});
+function testResize(){
+  console.log("test");
+  while(!$("#editor").is(":entireonscreen")){
+    $("#editor").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom - 0.1;
+  }
+};

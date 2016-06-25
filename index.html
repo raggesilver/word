@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
 	<title>Electron WYSIWYG - By Paulo</title>
 	<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
 	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
@@ -66,7 +66,7 @@
 
 				<button id="undo" class="toolBtn" title="undo"><img class="icon icons8-Undo" id="undoBtnImg" width="24" height="24"></button><button id="redo" class="toolBtn" title="redo"><img class="icon icons8-Redo" id="redoBtnImg" width="24" height="24"></button>
 				<button id="bulletPoints" class="toolBtn" title="bullet points"><img class="icon icons8-Bulleted-List" id="bulletBtnImg" width="24" height="24"></button><button id="numberPoints" class="toolBtn" title="number points"><img class="icon icons8-Numbered-List" id="numberBtnImg" width="24" height="24"></button>
-				<button class="toolBtn" onclick="toggleAdvFormat();"><img class="icon icons8-Expand-Arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABUElEQVRoQ+3Y3Q3CMAwE4GMDRmEEmASYgJFgFTaATRgB+SFSiAp1HF8aKucJtc3P50uR0g1W0jYrcSAgoyUZiUQipArE1iIV1jxsJGIuHaljJEIqrHnYqUSuAO4AbuZRuR1PAC4ADgBeaaoSIgh5UNp5QIysTdYo7ZFjSoikcMwKOhImR8gSnwD2KZWprTUi5idCVN/+tUbCzCJ+QeTeCBgVYg6yNEaN0ECWwlQhtJDemGpEDaQXxoSohbAxZoQFwsI0IawQb0wzogXihXFBtEJaMW4ID4gV44rwgtRi3BGeEC2GgvCGzGFoCAbkG0aup5Od/P44FMmF1sb6ilIeAfJ1uiNYiaRFT2EoCDak3GY0RA9IwuzyDwWt78NUf9Y7Us61zb9B/TOEsfaPMXslEhBtBSIRbaV6PReJ9Kq0dp5IRFupXs9FIr0qrZ1nNYm8AYhtbjNRZVKfAAAAAElFTkSuQmCC" width="24" height="24" style="-webkit-transform:rotate(360deg) " id="advFormatToolsBtnImg"></button>
+				<button class="toolBtn" onclick="toggleAdvFormat();"><img class="icon icons8-Expand-Arrow" width="24" height="24" style="-webkit-transform:rotate(360deg) " id="advFormatToolsBtnImg"></button>
 				<button class="closeBtn" onclick="_close();"><img class="icon icons8-Delete" id="closeBtnImg" width="24" height="24"></button>
 				<div id="advFormatTools">
 					<select class="fontSelection" id="fontFamilySelection">
@@ -89,27 +89,17 @@
 
 		<br/><br/>
 
-		<p style="text-align: center;" id="thankNote">~By Paulo~</p>
-
-		<div id="openFileDialog" style="display: none;">
-			<br/><br/>
-			<input id="filepathinput" type="text" placeholder="full path to file"><br/>
-			<button id="openFileBtn" class="btn" onclick="openFile()">Open</button>
-			<button id="openFileCloseBtn"><b>X</b></button>
-		</div>
-
-		<div id="saveFileDialog" style="display: none;">
-			<br/><br/>
-			<input id="saveFileInput" type="text" placeholder="full path to save file"><br/>
-			<button id="saveFileBtn" class="btn" onclick="saveFile()">Save</button>
-			<button id="saveFileCloseBtn"><b>X</b></button>
-		</div>
+		<p style="text-align: center;" id="thankNote"><a href="http://github.com/raggesilver/WYSIWYG" target="_blank">~GitHub~</a></p>
 
 		<div id="floatFormatBox" style="display: none; box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);">
-			<button class="toolBtn" id="bold2" title="bold"><img class="icon icons8-Bold" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADFElEQVRoQ+2Zj5EMQRSHfxcBIiADRIAIEAEiQASIABEggiMCRIAIkAERUF/Ve/Ttbb9+PdU727e1XbU1czc93f31+9tvTnQg7eRAOHQEmU2SGYlck/RS0uWBi/8hid8vSV8lfbP7xVNkQJ4YyOJJki++l8TvXbL/mW4ZkOeSntkEb5dMsuUdpHvDpMz1VtEHSd03SaWn6wF5IQmoXTTA7tn4V03NnkpKb9wsIOXmsPgH9o+bWcnMCALDK0mPDQKYZpsVBFXDm6Fm2AtOIGyjQD5Kut2azJ5jzJ8kYXPc15pL5bUkPOcqIH9aE1WePwoMmo1hgz5nNmmURBwkMx7uFu9317wTNlCTTHrczMQeRyL3m56wkIx7p0h10uPuEySjOgcBQo73XdLvTJ63T4kQyU8DY34o6c3Mxu5m4i6bVARXu9laz8/0X1siJIeoDA6EK2rDlXS+bC6N2vNz1KNBesLJT0sUieDbIPhfFGd2IhGPwi0Qghu772ePUhJ+gMN2uiDoPEoiLYDWcyC+FN4plV+Vg84CwppQseu2OCI9TqCZLDrMTCCsifSFBNHPI0R/7KTZRoGgGqTc2dYqNhD1kcYlSyqbMKNAiMDA9DRUCSdRKzYgHdJ9YO7YfXX8USCeE+GVMq0sNkTq4xUcgIBZDSSzMb4Ygh4SYcejzBrDR23D83tm4l2l8QB5Bkw8uVLZbo9RYRVn3yCl263ZgSeXHywT2Mo7AwjeidNiLQhmzi3DInv6ALRlO/2kWMurLgwIqQmutqZaFwLEFxml61ODUIDDLvBI3EceKVXfGm3sBK5W80q89yOyE1NqzbOGMCMeBeJBqwVRPicLwNCjiru7Xg5hYQo0CmRzlyMg/0rVgmZMpMG1dq7/N8YokNaiep+zeIoPeLNVS6a9C43646UoA6FKpPv8vVmcOPf+TBLBi5HtelU/DQFVD0jLMJdIhUWjPlz9qzExBZfb9ZmvB2TJQnvewTMBwIY1VWlz4AwIupr+KNmzcis4cFL0X+fr/7tnQBYPvuaLR5A1dzsz11EimV1as89fCTH3M0C2y2IAAAAASUVORK5CYII=" width="24" height="24"></button><button class="toolBtn" id="italic2" title="italic"><img class="icon icons8-Italic" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACEklEQVRoQ+2Z4TEEQRCFv4sAESACRIAIEAEiQASIABEgAkSACBABIkAEVFftVE2p3r2t2n5dW1fXf+yPq7Nf97x58+YmzEhNZoSDOcjYJpk1kWNgx4H/AA4jmpIF8tvxshvA61CYDJB14AX4BA6aF14E7prnkHcI+ZIp3bRldQHcViBbwCPwDNjz4MoAuQH2gRPgsnnjM+AUuAIMdHBlgNj6XwO2gafmje3vJrAH3A+mgBQfKUKvm/YNLACrgO1cg0s9kaKFN8BEb7UCvAM/gIk+pNQgnhZ2mx0rTOjWCTWIrX8zQjM9E72VCf4IOAcMNKTUILb+l4Ha9MKFrp6Irf+vpt11w4r4lwATfUgpJ+JpoXZ5E31YKUGK0Gst2BHlGngADDSslCCeForLhwpdrRHP9DyXD5mKaiJtpue5/KhBPC14Lh8CoVxanul5x/nRgxSh1yfe4vL1cX70IJ7peS4/ahDP9NpcftQgXUIPPfHWXVBsvynR9v8oFSBd0bY+zoctK9X2mxJt1RNJi7ZqEM/0JNFWDZIWbdUgadFWCTIt2obdYXnbXeT2693nyqKtciLeHZYs2ipBUqOtEiQ12qpApkXb0Dsspdg905NGW9VE0qOtCqQI3Y4o5YdNe7ZJSaKtCqTrV9s6t4ce3RXBysKUd5drO1no1WhbJyKdXdbtPl88B+nTpczPzCeS2e0+/+sPNg2VM8IOtsYAAAAASUVORK5CYII=" width="24" height="24"></button><button  class="toolBtn" id="underline2" title="underline"><img class="icon icons8-Underline" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACrklEQVRoQ+2ZgXFNQRSGv1RAB6gAFYQKUEGoABWEChIVoAJUECpABVJCVMB87Jm5uXnent23DLE7k8m7c/eec/7//P/uffv2uCRj75LgYAL52zo5O/KvduQjcGtV/FvgwWBAJ8CdnjxZaX37RcHZ57N4u/NkC4kEMX99nS20Nq87zwRSqM0SUetE3J8dyTLazVS2FWVed54JZHpku9amtKZHpkemR7YzMD0yPTI9Mj1yjoHuV4f59vuTgfRX6v9u+f0E3ARuA35eXzcqaON0j5s8dvpcjp7W11tzZDvyHtgH7gJ+9kzrHvAIeDUCBfAQeAm8A+6X8y3PuT5sOOu6kDILxGIPgKfAMfAEOAJelwJGYFnneAYcAi9KviEdkaE3RVLK6zrwpUS+AZzuiGRTvDjd9DRTBQwBYpAz4AoQhQeDI45OJUmyosMB7CtwtQbC+1lpOTcKXybT9ILbxSshU4vW4HZ3nauKpQWIzJjEwsP0ITkT9YB5XDzn8yEhD7E1ucDsjEqojhYgBgsD2gnBmCRWG+8rMxeEmmcs0MVCIpYkSJYg7Mzzkq8KolVaETD2EJdhwTgsSDnYrZCh990TnO+wOPciGRe8Q9b9HGaOnxViL0mB6AWylJjFKgk7I8t2zGU6M/Sa8+2eMTW8IJskFYlapRXPya4g7ICMKyevHQKKDc3PdsEhyxYdG2rIz+KVmTEF4XV0MUPIjzm9QHxWFi0qClVa6rrmjyhOkG54ITOBCiJl7jXCXYBELOXhEhr+kE1B+V+Glx5xjsXasfgpzzm+LRine4wAEt2xGAsMQLWiBKDJJaGrC8sEo4AsYwrGP6Wj/JYesWA7FD6pgU3f/x1A0slHTpxARrI5IlZLR3xtV/d/cugnvzZURwsQ94dr1YhjJ6RfVVqAjC1xcLTvxNLYM1ycqNIAAAAASUVORK5CYII=" width="24" height="24"></button>
+			<div style="display: inline;">
+				<button class="toolBtn" id="bold2" title="bold"><img class="icon icons8-Bold" id="bold2Img" width="24" height="24"></button>
+				<button class="toolBtn" id="italic2" title="italic"><img class="icon icons8-Italic" id="italic2Img" width="24" height="24"></button>
+				<button class="toolBtn" id="underline2" title="underline"><img class="icon icons8-Underline" id="underline2Img" width="24" height="24"></button>
+			</div>
 		</div>
 
-		<!--<div class="settingsDiv">
+		<div class="settingsDiv" style="display:none;">
 			Dark Mode<br/>
 			<label class="switch">
 			  <input type="checkbox">
@@ -124,9 +114,9 @@
 			  <div class="slider"></div>
 			</label>
 
-			<button style="position:absolute; top: 0; right:0;">X</button>
+			<button class="toolBtn" style="position:absolute; top: 0; right:0;" id="settingsDivCloseBtn"><img width="24" height="24" id="settingsDivCloseBtnImg"></button>
 
-		</div>-->
+		</div>
 
 </body>
 </html>
