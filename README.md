@@ -3,7 +3,7 @@
 WYIWYG html editor written in Javascrip + HTML.
 
 
-**Preview:** ![Alt Text](screenshots/preview-v0.0.4.png)
+**Preview:** ![Alt Text](screenshots/preview-v0.0.5.png)
 
 ## Features
 
@@ -14,12 +14,21 @@ WYIWYG html editor written in Javascrip + HTML.
 * Print
 * Drag and Drop file oppening (only own files)
 * No distraction mode
+* Dark theme (still no way to select it)
 
-## Incoming Features
+## Coming soon
 
 * Css selector
 * More fonts and colors
-* Dark Mode
+* Dark Mode (with option to be disabled)
+* Background image
+
+## Coming **not** soon
+
+* Spell checker
+* "Continue from where I left"
+* Recovery
+* Dropbox integration
 
 ## Credits
 

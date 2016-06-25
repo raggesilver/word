@@ -2,7 +2,7 @@ var $ = require('jquery');
 
 // Set images
 
-var darkMode = true;
+var darkMode = false;
 $(function(){
   // Normal mone
   if(!darkMode) setNormalMode();
