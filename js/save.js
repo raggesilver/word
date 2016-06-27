@@ -59,3 +59,21 @@ function testSave(){
      filepath = fileName;
    });
 }
+
+function saveSession(){
+  if(!fs.existsSync(__dirname + "/recovery")) fs.mkdirSync(__dirname + "/recovery");
+  var tmpTitle = "Untitled-" + Date();
+  if (needFilename()) {
+    var titles = document.getElementsByTagName("h1");
+    if(titles.length >= 2) tmpTitle = titles[1].innerHTML;
+    setFilepath(__dirname + "/recovery/" + tmpTitle + ".txt");
+    testSave();
+  } else {
+    var filepathArr = filepath.split("/");
+    var tmpFilename = filepathArr[filepathArr.length - 1];
+    setFilepath(__dirname + "/recovery/" + tmpFilename);
+    testSave();
+  }
+
+
+}

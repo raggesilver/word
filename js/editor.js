@@ -89,8 +89,8 @@ $(function(){
     document.execCommand("foreColor", false, "darkcyan");
   });
 
-  $("#cgreen").bind("click", function() {
-    document.execCommand("foreColor", false, "green");
+  $("#cwhite").bind("click", function() {
+    document.execCommand("foreColor", false, "white");
   });
 
   $("#openFileCloseBtn").bind("click", function() {
@@ -124,6 +124,14 @@ $(function(){
   $("#settingsDivCloseBtn").bind("click", function(){
     $(".settingsDiv").hide();
   });
+
+  /*$("#dp1").bind("click", function(){
+    myFunction();
+  });
+
+  $("#dp2").bind("click", function(){
+    myFunction2();
+  });*/
 
 var zoom = 1.0; // put this and the key events in a better place (separate from general shortcuts)
 
@@ -167,10 +175,10 @@ var zoom = 1.0; // put this and the key events in a better place (separate from 
           event.preventDefault();
           document.execCommand("formatBlock", false, "p");
           break;
-        case 't':
+        /*case 't':
           event.preventDefault();
-          testResize();
-          break;
+          saveSession();
+          break;*/
         }
     }
   });
@@ -282,24 +290,23 @@ var text = null;
 
 $(window).bind("mouseup", function(e){
 
-  if (floatOpen){ // if clicked outside
+  if (floatOpen){ // if float menu is open
 
     var container = $("#floatFormatBox");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
+    if (!container.is(e.target) // if clicked outside
         && container.has(e.target).length === 0) {$("#floatFormatBox").hide();}
     floatOpen = false;
   }
 
-  if ($("#filepathinput").is(":focus") || $("#saveFileInput").is(":focus")) return; // if typing file path
-  if ($(".toolBar").is(":focus") || $(".toolBtn").is(":focus") || $(".dropdown").is(":focus") || $(".btn").is(":focus") || $(".myDropdown2").is(":focus") || $(".btn2").is(":focus")) return;
-  // something is wrong in the if above
+  var ed = $("#editor");
+  if(!ed.is(e.target) && ed.has(e.target).length === 0) {lastText=""; return};
 
   if (window.getSelection) text = window.getSelection().toString();
-  else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
+  // else if (document.selection && document.selection.type != "Control") text = document.selection.createRange().text;
   else return;
 
-  if (text == "" || text == null) return;
+  if (text == "" || text == null) {lastText=""; return};
   if (lastText == text) {
     floatOpen = false;
     $("#floatFormatBox").hide();
@@ -309,7 +316,17 @@ $(window).bind("mouseup", function(e){
 
   lastText = text;
 
-  $("#floatFormatBox").css( {position:"absolute", top:e.pageY, left: e.pageX});
+  /*
+    Does not support scrolling
+
+    var sel = window.getSelection();
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+
+    $("#floatFormatBox").css( {position:"absolute", top:r.top - 40, left: r.left});
+
+  */
+
+  $("#floatFormatBox").css( {position:"absolute", top:e.pageY - 40, left: e.pageX});
 
   $("#floatFormatBox").show();
   floatOpen = true;
@@ -406,3 +423,7 @@ function testResize(){
     $("#editor").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom - 0.1;
   }
 };
+
+window.onbeforeunload = function(){
+  saveSession();
+}

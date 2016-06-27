@@ -208,6 +208,7 @@ button:focus {
 .btn2 {
   border: none;
   padding: 10px;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
 }
 
 .btn2:hover {

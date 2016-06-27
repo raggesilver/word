@@ -10,7 +10,7 @@ function _printFile(){
   $("#thankNote").show();
   if (!wasOnFocus) toggleNoDistractionMode();
   $("#editor").css("padding", "2cm");
-  
+
 }
 
 function wait(ms){

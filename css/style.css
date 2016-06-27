@@ -24,6 +24,7 @@ body {
   word-wrap: break-word;
   border: none;
   outline: 0 solid transparent;
+  font-family: sans-serif;
 }
 
 .topBar {
@@ -126,24 +127,24 @@ button:focus {
   display: block;
   text-align: center;
   width: 100%;
-  background-color: rgba(255, 255, 255, .9);
-  filter: blur(5px);
+  background-color: rgba(255, 255, 255, .89);
+  -webkit-app-region: drag;
 }
 
 .toolBtn {
   border: none;
   transition: .3s;
-  background-color: white;
+  background-color: transparent;
   min-width: 40px;
 }
 
 .toolBtn:hover {
-  background-color: lightgrey;
+  transform: scale(1.2);
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: white;
+    background-color: transparent;
     color: black;
     border: none;
     cursor: pointer;
@@ -153,7 +154,7 @@ button:focus {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-    background-color: lightgrey;
+    transform: scale(1.2);
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -199,6 +200,7 @@ button:focus {
 .btn2 {
   border: none;
   padding: 10px;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
 }
 
 .btn2:hover {
