@@ -356,3 +356,8 @@ input:checked + .slider:before {
   font-family: sans-serif;
     vertical-align:middle;
 }
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}

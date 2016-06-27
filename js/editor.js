@@ -125,6 +125,10 @@ $(function(){
     $(".settingsDiv").hide();
   });
 
+  $("#insTableBtn").bind("click", function(){
+    insertTable();
+  });
+
   /*$("#dp1").bind("click", function(){
     myFunction();
   });
@@ -191,43 +195,6 @@ function myFunction() {
 
 function myFunction2() {
     document.getElementById("myDropdown2").classList.toggle("show");
-}
-
-function __save(){
-  /*var fs = require('fs');
-  var text = document.getElementById("editor").innerHTML;
-  //alert(text);
-  var filename = "test";
-  if (!(filename.indexOf(".txt") > -1)) filename = filename + ".txt";
-  //alert(filename);
-
-  var path = __dirname + "/" + filename;
-  //alert(path);
-
-  var fs = require('fs');
-  fs.writeFile(path, text, function(err) {
-    if(err) {
-        return alert(err);
-    }
-
-    console.log("The file was saved!");
-  });*/
-
-  if (needFilename() == true) {
-
-    $("#saveFileDialog").toggle("show");
-
-  } else {
-    saveFile();
-  }
-
-}
-
-function __open(){
-
-  $("#openFileDialog").toggle("show");
-  return;
-
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -431,4 +398,16 @@ window.onbeforeunload = function(){
 
 $(function(){
   recoverSession();
+});
+
+function insertTable(){
+  document.execCommand("insertHTML", false, "<table border='1'><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></table>");
+}
+
+$(function(){
+  $(window).bind("click", function(e){
+    if(e.target.tagName == "TD") {
+      console.log($(e.target).parent().attr('name'));
+    }
+  });
 });

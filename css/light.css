@@ -339,3 +339,16 @@ input:checked + .slider:before {
   font-family: sans-serif;
   vertical-align:middle;
 }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+  table-layout:fixed;
+}

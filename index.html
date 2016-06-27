@@ -5,10 +5,6 @@
 	<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
 	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mb.browser.min.js"></script>
-	<script type="text/javascript" src="js/jquery.webkitresize.nonifrm.js"></script>
-	<script type="text/javascript" src="js/jquery.wysiwyg-resize.nonifrm.js"></script>
 	<script type="text/javascript" src="js/editor.js"></script>
 	<script type="text/javascript" src="js/save.js"></script>
 	<script type="text/javascript" src="js/open.js"></script>
@@ -33,18 +29,18 @@
 
 			</div>-->
 			<div class="toolBar">
-				<button id="menuButton" class="menuBtn" title="Menu"><img class="icon icons8-Menu" id="menuBtnImg" width="24" height="24"></button>
+				<button id="menuButton" class="menuBtn" title="Menu"><img class="icon icons8-Menu" id="menuBtnImg" width="20" height="20"></button>
 				<div id="advTools" style="display: inline">
-					<button class="toolBtn" title="open (ctrl + o)" id="openBtn" onclick="testOpen();"><img class="icon icons8-Open-Folder" id="openBtnImg" width="24" height="24"></button>
-					<button class="toolBtn" title="save (ctrl + s)" id="saveBtn" onclick="testSave();"><img class="icon icons8-Save-as" id="saveBtnImg" width="24" height="24"></button>
-					<button class="toolBtn" title="PDF" id="pdfBtn" onclick="generatePDF();"><img class="icon icons8-PDF" id="pdfBtnImg" width="24" height="24"></button>
-					<button class="toolBtn" title="print (ctrl + p)" id="printBtn" onclick="_printFile();"><img class="icon icons8-Print" id="printBtnImg" width="24" height="24"></button>
-					<button class="toolBtn" title="settings" id="settingsBtn"><img id="settingsBtnImg" width="24" height="24"></button>
-				</div><button class="toolBtn" id="bold" title="bold (ctrl + b)"><img class="icon icons8-Bold" id="boldBtnImg" width="24" height="24"></button><button class="toolBtn" id="italic" title="italic (ctrl + i)"><img class="icon icons8-Italic" id="italicBtnImg" width="24" height="24"></button><button  class="toolBtn" id="underline" title="underline (ctrl + u)"><img class="icon icons8-Underline" id="underlineBtnImg" width="24" height="24"></button>
-				<button id="jl" class="toolBtn" title="justify left"><img class="icon icons8-Align-Left" id="jlBtnImg" width="24" height="24"></button><button id="jc" class="toolBtn" title="justify center"><img class="icon icons8-Align-Center" id="jcBtnImg" width="24" height="24"></button><button id="jr" class="toolBtn" title="justify right"><img class="icon icons8-Align-Right" id="jrBtnImg" width="24" height="24"></button><button id="jf" class="toolBtn" title="justify fill"><img class="icon icons8-Align-Justify" id="jfBtnImg" width="24" height="24"></button>
+					<button class="toolBtn" title="open (ctrl + o)" id="openBtn" onclick="testOpen();"><img class="icon icons8-Open-Folder" id="openBtnImg" width="20" height="20"></button>
+					<button class="toolBtn" title="save (ctrl + s)" id="saveBtn" onclick="testSave();"><img class="icon icons8-Save-as" id="saveBtnImg" width="20" height="20"></button>
+					<button class="toolBtn" title="PDF" id="pdfBtn" onclick="generatePDF();"><img class="icon icons8-PDF" id="pdfBtnImg" width="20" height="20"></button>
+					<button class="toolBtn" title="print (ctrl + p)" id="printBtn" onclick="_printFile();"><img class="icon icons8-Print" id="printBtnImg" width="20" height="20"></button>
+					<button class="toolBtn" title="settings" id="settingsBtn"><img id="settingsBtnImg" width="20" height="20"></button>
+				</div><button class="toolBtn" id="bold" title="bold (ctrl + b)"><img class="icon icons8-Bold" id="boldBtnImg" width="20" height="20"></button><button class="toolBtn" id="italic" title="italic (ctrl + i)"><img class="icon icons8-Italic" id="italicBtnImg" width="20" height="20"></button><button  class="toolBtn" id="underline" title="underline (ctrl + u)"><img class="icon icons8-Underline" id="underlineBtnImg" width="20" height="20"></button>
+				<button id="jl" class="toolBtn" title="justify left"><img class="icon icons8-Align-Left" id="jlBtnImg" width="20" height="20"></button><button id="jc" class="toolBtn" title="justify center"><img class="icon icons8-Align-Center" id="jcBtnImg" width="20" height="20"></button><button id="jr" class="toolBtn" title="justify right"><img class="icon icons8-Align-Right" id="jrBtnImg" width="20" height="20"></button><button id="jf" class="toolBtn" title="justify fill"><img class="icon icons8-Align-Justify" id="jfBtnImg" width="20" height="20"></button>
 				<div class="dropdown" id="dp1">
-					<button onclick="myFunction()" class="dropbtn" id="dropbtn1"><img class="icon icons8-Lowercase" id="textformatBtnImg" width="24" height="24"></button>
-					<div id="myDropdown" class="dropdown-content" title="text format">
+					<button onclick="myFunction()" class="dropbtn" id="dropbtn1" title="text format"><img class="icon icons8-Lowercase" id="textformatBtnImg" width="20" height="20"></button>
+					<div id="myDropdown" class="dropdown-content">
 						<button class="btn" id="h1"><h1>Header 1</h1></button>
 						<button class="btn" id="h2"><h2>Header 2</h2></button>
 						<button class="btn" id="h3"><h3>Header 3</h3></button>
@@ -53,7 +49,7 @@
 				</div>
 
 				<div class="dropdown" id="dp2">
-					<button onclick="myFunction2()" class="dropbtn" id="dropbtn2" title="font color"><img class="icon icons8-Text-Color" id="textcolorBtnImg" width="24" height="24"></button>
+					<button onclick="myFunction2()" class="dropbtn" id="dropbtn2" title="font color"><img class="icon icons8-Text-Color" id="textcolorBtnImg" width="20" height="20"></button>
 					<div id="myDropdown2" class="dropdown-content">
 						<br/>
 						<button class="btn2" id="cred" style="background-color: red"><br/></button>
@@ -62,14 +58,13 @@
 						<button class="btn2" id="cblack" style="background-color: black"><br/></button>
 						<br/>
 						<br/>
-						<!--<input type="text" placeholder="hexadecimal color" style="border: padding 5px; margin-top: 5px; text-align: center;"><button class="toolBtn" style="width: 100%; margin-top: 1px;">Apply</button>-->
 					</div>
 				</div>
 
-				<button id="undo" class="toolBtn" title="undo"><img class="icon icons8-Undo" id="undoBtnImg" width="24" height="24"></button><button id="redo" class="toolBtn" title="redo"><img class="icon icons8-Redo" id="redoBtnImg" width="24" height="24"></button>
-				<button id="bulletPoints" class="toolBtn" title="bullet points"><img class="icon icons8-Bulleted-List" id="bulletBtnImg" width="24" height="24"></button><button id="numberPoints" class="toolBtn" title="number points"><img class="icon icons8-Numbered-List" id="numberBtnImg" width="24" height="24"></button>
-				<button class="toolBtn" onclick="toggleAdvFormat();"><img class="icon icons8-Expand-Arrow" width="24" height="24" style="-webkit-transform:rotate(360deg) " id="advFormatToolsBtnImg"></button>
-				<button class="closeBtn" onclick="_close();"><img class="icon icons8-Delete" id="closeBtnImg" width="24" height="24"></button>
+				<button id="undo" class="toolBtn" title="undo"><img class="icon icons8-Undo" id="undoBtnImg" width="20" height="20"></button><button id="redo" class="toolBtn" title="redo"><img class="icon icons8-Redo" id="redoBtnImg" width="20" height="20"></button>
+				<button id="bulletPoints" class="toolBtn" title="bullet points"><img class="icon icons8-Bulleted-List" id="bulletBtnImg" width="20" height="20"></button><button id="numberPoints" class="toolBtn" title="number points"><img class="icon icons8-Numbered-List" id="numberBtnImg" width="20" height="20"></button>
+				<button class="toolBtn" onclick="toggleAdvFormat();"><img class="icon icons8-Expand-Arrow" width="20" height="20" style="-webkit-transform:rotate(360deg) " id="advFormatToolsBtnImg"></button>
+				<button class="closeBtn" onclick="_close();"><img class="icon icons8-Delete" id="closeBtnImg" width="20" height="20"></button>
 				<div id="advFormatTools">
 					<select class="fontSelection" id="fontFamilySelection">
 						<option value="Arial" style="font-family: Arial">Arial</option>
@@ -78,12 +73,14 @@
 						<option value="Times New Roman" style="font-family: Times New Roman">Times New Roman</option>
 					</select>
 					<input type="number" min="4" max="70" id="fontSizeBox"/>
+
+					<button id="insTableBtn" class="toolBtn" title="insert table"><img width="20" height="20" id="insTableBtnImg"></button><button id="insImgBtn" class="toolBtn" title="insert image"><img width="20" height="20" id="insImgBtnImg"></button>
 				</div>
 
 			</div>
 		</div>
 
-		<br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/>
 
 		<div id="editor" class="editor" spellcheck="true">
 
@@ -95,7 +92,7 @@
 
 		<div id="floatFormatBox" style="display: none; box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);">
 			<div style="display: inline;">
-				<button class="toolBtn" id="bold2" title="bold"><img class="icon icons8-Bold" id="bold2Img" width="24" height="24"></button><button class="toolBtn" id="italic2" title="italic"><img class="icon icons8-Italic" id="italic2Img" width="24" height="24"></button><button class="toolBtn" id="underline2" title="underline"><img class="icon icons8-Underline" id="underline2Img" width="24" height="24"></button>
+				<button class="toolBtn" id="bold2" title="bold"><img class="icon icons8-Bold" id="bold2Img" width="20" height="20"></button><button class="toolBtn" id="italic2" title="italic"><img class="icon icons8-Italic" id="italic2Img" width="20" height="20"></button><button class="toolBtn" id="underline2" title="underline"><img class="icon icons8-Underline" id="underline2Img" width="20" height="20"></button>
 
 			</div>
 		</div>
@@ -117,7 +114,7 @@
 				</label>
 			</div>
 
-			<button class="toolBtn" style="position:absolute; top: 0; right:0;" id="settingsDivCloseBtn"><img width="24" height="24" id="settingsDivCloseBtnImg"></button>
+			<button class="toolBtn" style="position:absolute; top: 0; right:0;" id="settingsDivCloseBtn"><img width="20" height="20" id="settingsDivCloseBtnImg"></button>
 
 		</div>
 
