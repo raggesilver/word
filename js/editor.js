@@ -267,7 +267,7 @@ document.ondrop = function (e) {
     // console.log(e.dataTransfer.files[i].path);
     var dragFilepath = e.dataTransfer.files[i].path;
     if (dragFilepath.indexOf(".txt") > -1){
-      openViaPath(dragFilepath);
+      openViaPath(dragFilepath, false);
     } else {
       alert("File type unsupported. If it is a picture, please use ctrl+c and ctrl+v or wait for a new decent version.");
     }
@@ -426,4 +426,9 @@ function testResize(){
 
 window.onbeforeunload = function(){
   saveSession();
+  setSettings();
 }
+
+$(function(){
+  recoverSession();
+});

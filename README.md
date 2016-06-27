@@ -14,20 +14,19 @@ WYIWYG html editor written in Javascrip + HTML.
 * Print
 * Drag and Drop file oppening (only own files)
 * No distraction mode
-* Dark theme (still no way to select it)
+* Dark theme
+* Recover files ("continue from where I left")
 
 ## Coming soon
 
 * Css selector
 * More fonts and colors
-* Dark Mode (with option to be disabled)
 * Background image
 
 ## Coming **not** soon
 
 * Spell checker
-* "Continue from where I left"
-* Recovery
+* "Continue from where I left" (with saved files)
 * Dropbox integration
 
 ## Credits

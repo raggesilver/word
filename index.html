@@ -100,20 +100,22 @@
 			</div>
 		</div>
 
-		<div class="settingsDiv" style="display:none;">
-			Dark Mode<br/>
-			<label class="switch">
-			  <input type="checkbox">
-			  <div class="slider"></div>
-			</label>
+		<div class="settingsDiv" style="display:none; font-family: sans-serif">
+			<div style="margin-top: 5%;">
+				Dark Mode<br/>
+				<label class="switch">
+				  <input type="checkbox" onchange="setMode();" id="darkModeSwitch">
+				  <div class="slider"></div>
+				</label>
 
-			<br/>
+				<br/>
 
-			Auto-hide toolbar<br/>
-			<label class="switch">
-			  <input type="checkbox">
-			  <div class="slider"></div>
-			</label>
+				Auto-hide toolbar<br/>
+				<label class="switch">
+				  <input type="checkbox">
+				  <div class="slider"></div>
+				</label>
+			</div>
 
 			<button class="toolBtn" style="position:absolute; top: 0; right:0;" id="settingsDivCloseBtn"><img width="24" height="24" id="settingsDivCloseBtnImg"></button>
 

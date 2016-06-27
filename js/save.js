@@ -10,6 +10,8 @@ function needFilename(){
   return filepath == "" || filepath == null;
 }
 
+function getFilepath(){return filepath;}
+
 function saveFile(){
    if (filepath != "") {
 
@@ -61,6 +63,7 @@ function testSave(){
 }
 
 function saveSession(){
+  if(document.getElementById("editor").innerHTML == getOpentext() || document.getElementById("editor").innerHTML == "") return;
   if(!fs.existsSync(__dirname + "/recovery")) fs.mkdirSync(__dirname + "/recovery");
   var tmpTitle = "Untitled-" + Date();
   if (needFilename()) {

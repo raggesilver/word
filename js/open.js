@@ -3,6 +3,7 @@ var remote = require('remote');
 var dialog = remote.require('dialog');
 
 var fs = require('fs');
+var openText;
 
 function openFile(){
 
@@ -21,16 +22,28 @@ function openFile(){
 
 }
 
-function openViaPath(filepath){
+function openViaPath(filepath, isFromRecover){
   if (!filepath) return false;
-  var text = fs.readFileSync(filepath);
+  if(!isFromRecover){
+    var text = fs.readFileSync(filepath);
 
-  var _title = filepath.split("/");
-  //alert(_title.length);
-  var title = _title[_title.length - 1];
+    var _title = filepath.split("/");
+    //alert(_title.length);
+    var title = _title[_title.length - 1];
 
-  document.title = "Electron WYSIWYG - " + title;
-  document.getElementById("editor").innerHTML = text;
+    document.title = "Electron WYSIWYG - " + title;
+    document.getElementById("editor").innerHTML = text;
+  } else {
+    var text = fs.readFileSync(filepath);
+
+    var _title = filepath.split("/");
+    //alert(_title.length);
+    var title = _title[_title.length - 1];
+
+    document.title = "Electron WYSIWYG - " + title + " (RECOVERY FILE)";
+    document.getElementById("editor").innerHTML = text;
+  }
+
 }
 
 function testOpen(){
@@ -38,6 +51,7 @@ function testOpen(){
    var text = fs.readFileSync(fileNames[0]);
    setFilepath(fileNames[0]);
    document.getElementById("editor").innerHTML = text;
+   openText = text;
    var _title = fileNames[0].split("/");
    //alert(_title.length);
    var title = _title[_title.length - 1];
@@ -60,3 +74,23 @@ $(function(){
     document.title = "Electron WYSIWYG - " + title;
   }
 });
+
+function recoverSession(){
+  var dir = __dirname + "/recovery/";
+  var files = fs.readdirSync(dir)
+              .map(function(v) {
+                  return { name:v,
+                           time:fs.statSync(dir + v).mtime.getTime()
+                         };
+               })
+               .sort(function(a, b) { return a.time - b.time; })
+               .map(function(v) { return v.name; });
+
+  /*for (var i = files.length - 1; i>-1; i--){
+    console.log(files[i]);
+  }*/
+  //setFilepath(__dirname + "/recovery/" + files[files.length - 1]);
+  openViaPath(__dirname + "/recovery/" + files[files.length - 1], true);
+}
+
+function getOpentext(){return openText;}
