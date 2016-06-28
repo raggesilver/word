@@ -1,3 +1,0 @@
-electron-packager . Node --platform=linux --arch=x64
-electron-packager . Node --platform=darwin --arch=x64
-electron-packager . Node --platform=win32 --arch=x64
