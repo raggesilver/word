@@ -33,6 +33,14 @@ Simple word processor written in JavaScript, built with electron! The main objec
 * Searching for workarround for mac shortcut issues
 * Aware of **broken recover function on Windows**
 
+## Installation
+
+For Ubuntu and MAC make sure Node and NPM are installed, then clone and execute "compile.sh" or:
+```bash
+nmp install
+npm start
+```
+
 ## Credits
 
 Icon pack by [Icons8](https://icons8.com)
