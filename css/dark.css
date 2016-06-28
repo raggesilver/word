@@ -16,7 +16,7 @@ body {
 
 .editor {
   text-align: inherit;
-  width: 19cm;
+  max-width: 19cm;
   min-height: 27cm;
   padding: 2cm;
   margin: auto;
@@ -360,4 +360,19 @@ input:checked + .slider:before {
 table, th, td {
     border: 1px solid white;
     border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+  table-layout:fixed;
+}
+
+.floatingTableTools {
+  width: 200px;
+  background-color: transparent;
+  text-align: center;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
 }

@@ -3,8 +3,16 @@
 distro=`uname -a`
 arch=`uname -m`
 
-if [[ $distro == *"Linux"* ]]; then distro="linux"; com="xdg-open"; fi
-if [[ $distro == *"Darwin"* ]]; then distro="darwin"; com="open"; fi
+if [[ $distro == *"Linux"* ]]; then
+	sudo apt install npm
+	distro="linux"
+	com="xdg-open"
+	if [[ ! `dpkg -s nodejs-legacy` == *"install ok installed"* ]]; then
+		sudo apt install nodejs-legacy
+	fi
+elif [[ $distro == *"Darwin"* ]]; then distro="darwin"; com="open"
+else
+	exit 1; fi
 if [[ $arch == "x86_64" ]]; then arch="x64"; fi
 
 if [[ $distro == "darwin" || $distro == "linux" ]]; then
@@ -16,4 +24,4 @@ if [[ $distro == "darwin" || $distro == "linux" ]]; then
 		mv Nod* /Applications/Node\ WYSIWYG
 	fi
 	exit 0
-fi 
+fi

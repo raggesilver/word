@@ -7,6 +7,9 @@
 body {
   margin: 0 auto;
   padding: 0;
+  /*background-image: url(bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;*/
 }
 
 ::-webkit-scrollbar {
@@ -14,8 +17,9 @@ body {
 }
 
 .editor {
+  /*background-color: rgba(255, 255, 255, .89);*/
   text-align: inherit;
-  width: 19cm;
+  max-width: 19cm;
   min-height: 27cm;
   padding: 2cm;
   margin: auto;
@@ -25,6 +29,7 @@ body {
   border: none;
   outline: 0 solid transparent;
   font-family: sans-serif;
+  margin-top: 2cm;
 }
 
 .topBar {
@@ -129,6 +134,7 @@ button:focus {
   width: 100%;
   background-color: rgba(255, 255, 255, .89);
   -webkit-app-region: drag;
+  -webkit-user-select: none;
 }
 
 .toolBtn {
@@ -351,4 +357,11 @@ table {
   word-wrap: break-word;
   max-width: 100%;
   table-layout:fixed;
+}
+
+.floatingTableTools {
+  width: 200px;
+  background-color: transparent;
+  text-align: center;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
 }

@@ -1,6 +1,6 @@
 # WYSIWYG
 
-WYIWYG html editor written in Javascrip + HTML.
+Simple word processor written in JavaScript, built with electron! The main objective is to provide a decent editor with a clean UI - without lack of functionality. Please help us by testing and reporting bugs :D
 
 
 **Preview:** ![Alt Text](screenshots/preview-v0.0.6-corrected.png)
@@ -20,18 +20,18 @@ WYIWYG html editor written in Javascrip + HTML.
 * Css selector
 * More fonts and colors
 * Background image
-
-## Coming **not** soon
-
 * Spell checker
 * "Continue from where I left" (with saved files)
 * Dropbox integration
 * Paging
 
-## Coming **really not** soon
+## Changelog (28 Jun)
 
-* ABNT formatting
-* Cover, summary, etc...
+* Working on **table functions**
+* Planing **animations for color selection** and button fixing
+* Improving dark theme (which seems to be breaking -webkit-app-region: drag)
+* Searching for workarround for mac shortcut issues
+* Aware of **broken recover function on Windows**
 
 ## Credits
 

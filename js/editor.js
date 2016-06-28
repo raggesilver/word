@@ -142,8 +142,8 @@ var zoom = 1.0; // put this and the key events in a better place (separate from 
   $(document).bind('keydown', function(event) {
     $("#floatFormatBox").hide();
     if (event.ctrlKey || event.metaKey) {
-      if(event.keyCode == '189') {$("#editor").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom - 0.1; }
-      if(event.keyCode == '187') {$("#editor").animate({ 'zoom': (zoom + 0.1) }, 50); zoom = zoom + 0.1; }
+      /*if(event.keyCode == '189') {$("#editor").animate({ 'zoom': (zoom - 0.1) }, 50); $(".floatingTableTools").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom - 0.1; }
+      if(event.keyCode == '187') {$("#editor").animate({ 'zoom': (zoom + 0.1) }, 50); $(".floatingTableTools").animate({ 'zoom': (zoom - 0.1) }, 50); zoom = zoom + 0.1; }*/
       switch (String.fromCharCode(event.which).toLowerCase()) {
         case 's':
           event.preventDefault();
@@ -408,12 +408,12 @@ $(function(){
   $(window).bind("click", function(e){
     console.log(e.target.tagName.toString());
     console.log(e.target.tagName === "TD");
-    
+
     if(e.target.tagName === "TD") {
-      // var test = $(e.target).closest("table");
-      // console.log($(test).offset().top);
+      var test = $(e.target).closest("table");
+      console.log($(test).offset().top);
       $(".floatingTableTools").show();
-      $(".floatingTableTools").css({position: "absolute", top: $(test).offset().top - 40, left: $(test).offset().left});
+      $(".floatingTableTools").css({position: "absolute", top: $(test).offset().top - 40, right: 0, left: 0, margin: "auto"});
     } else {
       $(".floatingTableTools").hide();
     }
