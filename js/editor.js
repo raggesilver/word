@@ -406,8 +406,16 @@ function insertTable(){
 
 $(function(){
   $(window).bind("click", function(e){
-    if(e.target.tagName == "TD") {
-      console.log($(e.target).parent().attr('name'));
+    console.log(e.target.tagName.toString());
+    console.log(e.target.tagName === "TD");
+    
+    if(e.target.tagName === "TD") {
+      // var test = $(e.target).closest("table");
+      // console.log($(test).offset().top);
+      $(".floatingTableTools").show();
+      $(".floatingTableTools").css({position: "absolute", top: $(test).offset().top - 40, left: $(test).offset().left});
+    } else {
+      $(".floatingTableTools").hide();
     }
   });
 });
