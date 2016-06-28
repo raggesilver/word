@@ -29,7 +29,7 @@ Simple word processor written in JavaScript, built with electron! The main objec
 
 * Working on **table functions**
 * Planing **animations for color selection** and button fixing
-* Improving dark theme (which seems to be breaking -webkit-app-region: drag)
+* Improving dark theme (which seems to be breaking ```-webkit-app-region: drag```)
 * Searching for workarround for mac shortcut issues
 * Aware of **broken recover function on Windows**
 
