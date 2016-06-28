@@ -37,7 +37,7 @@ Simple word processor written in JavaScript, built with electron! The main objec
 
 For Ubuntu and MAC make sure Node and NPM are installed, then clone and execute "compile.sh" or:
 ```bash
-nmp install
+npm install
 npm start
 ```
 
