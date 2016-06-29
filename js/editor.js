@@ -219,15 +219,17 @@ function toggleNoDistractionMode(){
   if (isOnFocusMode){
     $(".toolBar").show();
     $('.editor').css('box-shadow', "0 0 0.5cm rgba(0, 0, 0, 0.3)");
+    $('.editor').css('margin-top', "2cm");
   } else {
     $(".toolBar").hide();
     $('.editor').css("box-shadow", "0 0 0 rgba(0,0,0,0)");
+    $('.editor').css('margin-top', "0");
   }
 
   isOnFocusMode = !isOnFocusMode;
 }
 
-document.ondrop = function (e) {
+$(".editor").ondrop = function (e) {
   e.preventDefault();
 
   for (var i = 0; i < e.dataTransfer.files.length; ++i) {
@@ -404,18 +406,30 @@ function insertTable(){
   document.execCommand("insertHTML", false, "<table border='1'><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></table>");
 }
 
+var lastClickedTable;
+
 $(function(){
   $(window).bind("click", function(e){
-    console.log(e.target.tagName.toString());
-    console.log(e.target.tagName === "TD");
+    /*console.log(e.target.tagName.toString());
+    console.log(e.target.tagName === "TD");*/
+
+    if(e.target.class == "tableBtn") return;
 
     if(e.target.tagName === "TD") {
-      var test = $(e.target).closest("table");
-      console.log($(test).offset().top);
+      lastClickedTable = $(e.target).closest("table");
+      //console.log($(test).offset().top);
       $(".floatingTableTools").show();
-      $(".floatingTableTools").css({position: "absolute", top: $(test).offset().top - 40, right: 0, left: 0, margin: "auto"});
+      $(".floatingTableTools").css({position: "absolute", top: $(lastClickedTable).offset().top - 40, right: 0, left: 0, margin: "auto"});
     } else {
       $(".floatingTableTools").hide();
     }
+  });
+});
+
+/* Table functions */
+
+$(function(){
+  $("#addRowBtn").bind("click", function(e){
+    $(lastClickedTable).append("<tr><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td></tr>");
   });
 });

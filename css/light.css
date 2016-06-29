@@ -135,6 +135,7 @@ button:focus {
   background-color: rgba(255, 255, 255, .89);
   -webkit-app-region: drag;
   -webkit-user-select: none;
+  z-index: 999;
 }
 
 .toolBtn {
@@ -364,4 +365,10 @@ table {
   background-color: transparent;
   text-align: center;
   box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);
+}
+
+.colorWheel {
+  display: none;
+  transition-duration: 0.8s;
+  transition-property: transform;
 }

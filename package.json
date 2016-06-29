@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/raggesilver/WYSIWYG#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.25.1",
+    "electron-prebuilt": "^0.25.3",
     "jquery": "^3.0.0",
     "jquery-ui": "^1.10.5",
     "jspdf": "^1.2.61",
