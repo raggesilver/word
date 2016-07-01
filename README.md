@@ -33,7 +33,7 @@ Simple word processor written in JavaScript, built with electron! The main objec
 * Aware of broken shortcuts on MAC (apparently only on Mac Book Air)
 * Discontinued supporting Windows (until problems in Ubuntu and OS X are solved)
 
-Complete changelog [here](https://github.com/raggesilver/WYSIWYG/blob/daily/README.md).
+Complete changelog [here](https://github.com/raggesilver/WYSIWYG/blob/daily/changelog/changelog.md).
 
 ## Installation
 
