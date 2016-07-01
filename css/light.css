@@ -18,6 +18,7 @@ body {
 
 .editor {
   /*background-color: rgba(255, 255, 255, .89);*/
+  background-color: white;
   text-align: inherit;
   max-width: 19cm;
   min-height: 27cm;
@@ -29,6 +30,7 @@ body {
   border: none;
   outline: 0 solid transparent;
   font-family: sans-serif;
+  font-size: 12px;
   margin-top: 2cm;
 }
 
@@ -127,6 +129,7 @@ button:focus {
 
 .toolBar {
   position: fixed;
+  top: 0;
   margin: auto;
   padding: 5px;
   display: block;
@@ -371,4 +374,14 @@ table {
   display: none;
   transition-duration: 0.8s;
   transition-property: transform;
+}
+
+.floatingAddRowDiv {
+  width: 20%;
+  text-align: center;
+}
+
+.floatingAddColDiv {
+  width: 20%;
+  text-align: center;
 }

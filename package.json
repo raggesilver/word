@@ -1,8 +1,24 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "WYIWYG html editor written in Javascrip + HTML.",
+  "description": "Simple word processor written in JavaScript, built with electron! The main objective is to provide a decent editor with a clean UI - without lack of functionality. Please help us by testing and reporting bugs :D",
   "main": "index.js",
+  "dependencies": {
+    "electron-prebuilt": "^0.25.1",
+    "jquery": "^3.0.0",
+    "jquery-ui": "^1.10.5",
+    "jspdf": "^1.2.61",
+    "noty": "^2.3.8",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.25.1",
+    "jquery": "^3.0.0",
+    "jquery-ui": "^1.10.5",
+    "jspdf": "^1.2.61",
+    "noty": "^2.3.8",
+    "path": "^0.12.7"
+  },
   "scripts": {
     "start": "electron ."
   },
@@ -15,13 +31,5 @@
   "bugs": {
     "url": "https://github.com/raggesilver/WYSIWYG/issues"
   },
-  "homepage": "https://github.com/raggesilver/WYSIWYG#readme",
-  "devDependencies": {
-    "electron-prebuilt": "^0.25.3",
-    "jquery": "^3.0.0",
-    "jquery-ui": "^1.10.5",
-    "jspdf": "^1.2.61",
-    "noty": "^2.3.8",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/raggesilver/WYSIWYG#readme"
 }

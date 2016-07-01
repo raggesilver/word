@@ -402,34 +402,93 @@ $(function(){
   recoverSession();
 });
 
+/* table functions */
+// Please detect when table is deleted
+
 function insertTable(){
-  document.execCommand("insertHTML", false, "<table border='1'><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></table>");
+  document.execCommand("insertHTML", false, "<table border='1'><tr><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td></tr><tr><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td></tr><tr><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td></tr></table>");
 }
 
 var lastClickedTable;
+var lastClickedTd;
+var rows;
+var cols;
 
 $(function(){
   $(window).bind("click", function(e){
     /*console.log(e.target.tagName.toString());
     console.log(e.target.tagName === "TD");*/
 
-    if(e.target.class == "tableBtn") return;
+    if($(e.target).hasClass("tableBtn")) {showTableTools(); return;}
 
-    if(e.target.tagName === "TD") {
+    if(e.target.tagName === "TD" || $(e.target).closest("td").length>0) {
+      lastClickedTd = $(e.target);
       lastClickedTable = $(e.target).closest("table");
-      //console.log($(test).offset().top);
-      $(".floatingTableTools").show();
-      $(".floatingTableTools").css({position: "absolute", top: $(lastClickedTable).offset().top - 40, right: 0, left: 0, margin: "auto"});
+      cols = $(e.target).closest("table").find("tr")[0].cells.length;
+      rows = $(e.target).closest("table").find("tbody").children().length;
+      showTableTools();
     } else {
-      $(".floatingTableTools").hide();
+      hideTableTools();
     }
   });
+
+  function hideTableTools(){
+    $(".floatingTableTools").hide();
+    $(".floatingAddRowDiv").hide();
+    $(".floatingAddColDiv").hide();
+  }
+
+  function showTableTools(){
+    $(".floatingTableTools").css({
+      position: "absolute",
+      top: $(lastClickedTable).offset().top - 40,
+      right: 0,
+      left: 0,
+      margin: "auto"
+    });
+    $(".floatingAddRowDiv").css({
+      position: "absolute",
+      top: $(lastClickedTable).offset().top + $(lastClickedTable).outerHeight(),
+      right: 0,
+      left: 0,
+      margin: "auto"
+    });
+    $(".floatingAddColDiv").css({
+      position: "absolute",
+      top: $(lastClickedTable).offset().top + ($(lastClickedTable).outerHeight() / 2) - 15,
+      left: $(lastClickedTable).offset().left + $(lastClickedTable).outerWidth() - ($(".floatingAddColDiv").width() / 2) + 40,
+      margin: "0"
+    });
+    $(".floatingTableTools").show();
+    $(".floatingAddRowDiv").show();
+    $(".floatingAddColDiv").show();
+  }
 });
 
 /* Table functions */
 
 $(function(){
-  $("#addRowBtn").bind("click", function(e){
-    $(lastClickedTable).append("<tr><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td></tr>");
+  $("#addRowBtn, .floatingAddRowBtn").bind("click", function(e){
+    var content = null;
+    for (var i = 0; i < cols; i++){
+      content = content + "<td>&nbsp</td>";
+    }
+    $(lastClickedTable).append("<tr>" + content + "</tr>");
+    $(lastClickedTd).click();
+  });
+
+  $("#addColumnBtn, .floatingAddColBtn").bind("click", function(e){
+    $(lastClickedTable).find("tbody").children().append("<td>&nbsp</td>");
+  });
+
+  $("#rmvRowBtn, .floatingRmvRowBtn").bind("click", function(e){
+    $(lastClickedTable).find("tr").last().remove();
+  });
+
+  $("#rmvColumnBtn, .floatingRmvColBtn").bind("click", function(e){
+    $(lastClickedTable).find("tbody").children().each(function(i, row){
+      $(row).find('th:last, td:last').remove();
+    });
+    //$(lastClickedTable).find('th:last, td:last').remove();
   });
 });
