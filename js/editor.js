@@ -285,17 +285,12 @@ $(window).bind("mouseup", function(e){
 
   lastText = text;
 
-  /*
-    Does not support scrolling
+  var sel = window.getSelection();
+  var r = sel.getRangeAt(0).getBoundingClientRect();
 
-    var sel = window.getSelection();
-    var r = sel.getRangeAt(0).getBoundingClientRect();
+  $("#floatFormatBox").css( {position:"absolute", top:r.top - $("#floatFormatBox").outerHeight(), left: r.left + r.width / 2 - $("#floatFormatBox").width() / 2});
 
-    $("#floatFormatBox").css( {position:"absolute", top:r.top - 40, left: r.left});
-
-  */
-
-  $("#floatFormatBox").css( {position:"absolute", top:e.pageY - 40, left: e.pageX});
+  //$("#floatFormatBox").css( {position:"absolute", top:e.pageY - 40, left: e.pageX});
 
   $("#floatFormatBox").show();
   floatOpen = true;
@@ -492,3 +487,47 @@ $(function(){
     //$(lastClickedTable).find('th:last, td:last').remove();
   });
 });
+
+$(function(){
+  $("#styleChooserBtn").bind("click", function(){
+    $(".styleChooserDiv").toggle("show");
+  });
+
+  $("#styleChooserCloseBtn").bind("click", function(){
+    $(".styleChooserDiv").hide();
+  });
+
+  $("#applyStyle").bind("click", function(){
+    var ls = document.createElement('link');
+    ls.rel="stylesheet";
+    ls.href= "css/" + "style/style1.css";
+    document.body.appendChild(ls);
+  });
+});
+
+function setStyle(custom, number, path){
+  var ls = document.createElement('link');
+  ls.rel="stylesheet";
+  ls.href= "";
+  if(custom !== 'true'){
+    ls.href = "css/style/style" + number.toString() + ".css";
+  }
+  document.body.appendChild(ls);
+}
+
+document.addEventListener('drop',function(event){
+    event.preventDefault();
+    return false;
+  },false);
+
+function openOnDrop(e){
+  for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+    // console.log(e.dataTransfer.files[i].path);
+    var dragFilepath = e.dataTransfer.files[i].path;
+    if (dragFilepath.indexOf(".txt") > -1){
+      openViaPath(dragFilepath, false);
+    } else {
+      alert("File type unsupported. If it is a picture, please use ctrl+c and ctrl+v or wait for a new decent version.");
+    }
+  }
+}

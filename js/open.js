@@ -4,6 +4,7 @@ var dialog = remote.require('dialog');
 
 var fs = require('fs');
 var openText;
+var openSettings;
 
 function openFile(){
 
@@ -49,9 +50,34 @@ function openViaPath(filepath, isFromRecover){
 function testOpen(){
  dialog.showOpenDialog({ filters: [{ name: 'text', extensions: ['txt'] }]}, function (fileNames) {
    var text = fs.readFileSync(fileNames[0]);
+   try {
+     var textArr = text.toString();
+     textArr = textArr.split("\n");
+     var textToRemove = "";
+     if(textArr !== 'null' && textArr.length >= 2){
+       for (var i = 0; i < textArr.length - 1; i++){
+         if (textArr[i].indexOf("@define:")>=0){
+           textToRemove += textArr[i].toString();
+           var line = textArr[i].split("@define:").pop();
+           var definition = line.split(">")[0];
+           var value = textArr[i].split(">")[1];
+           switch (definition) {
+             case 'style':
+               setStyle(false, Number(value), null);
+               break;
+             default:
+
+           }
+         }
+       }
+     }
+   } catch (e) {
+     throw e;
+   }
    setFilepath(fileNames[0]);
-   document.getElementById("editor").innerHTML = text;
+   document.getElementById("editor").innerHTML = text.toString().replace(textToRemove.toString(), "");
    openText = text;
+   openSettings = textToRemove;
    var _title = fileNames[0].split("/");
    //alert(_title.length);
    var title = _title[_title.length - 1];
@@ -94,3 +120,4 @@ function recoverSession(){
 }
 
 function getOpentext(){return openText;}
+function getOpensettings(){return openSettings;}

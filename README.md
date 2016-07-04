@@ -3,7 +3,7 @@
 Simple word processor written in JavaScript, built with electron! The main objective is to provide a decent editor with a clean UI - without lack of functionality. Please help us by testing and reporting bugs :)
 
 
-**Preview:** ![Alt Text](screenshots/preview-v0.0.7-corrected.png)
+**Preview:** ![Alt Text](screenshots/preview-v0.0.8.png)
 
 ## Features
 
@@ -25,12 +25,14 @@ Simple word processor written in JavaScript, built with electron! The main objec
 * Dropbox integration
 * Paging
 
-## Changelog (01 Jul)
+## Changelog (04 Jul)
 
-* Added table and table tools
-* Failed to migrate from electron 0.25.1 to lastest version
-* Aware of drag and drop bug (overwrites the whole editor)
-* Aware of broken shortcuts on MAC (apparently only on Mac Book Air)
+![Alt Text](screenshots/complementar-v0.0.8.png)
+
+* Disabled drag-and-drop due to electron issues
+* Working on styling (document)
+* Working on reading settings from document file (for styling)
+* New button "Styles" came to tool bar
 * Discontinued supporting Windows (until problems in Ubuntu and OS X are solved)
 
 Complete changelog [here](https://github.com/raggesilver/WYSIWYG/blob/daily/changelog/changelog.md).

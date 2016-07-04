@@ -47,7 +47,7 @@
 						<button class="btn" id="p">Default</button>
 					</div>
 				</div>
-
+				<button class="toolBtn" title="choose style" id="styleChooserBtn"><img width="20" class="styleChooserBtnImg"/></button>
 				<div class="dropdown" id="dp2">
 					<button onclick="myFunction2()" class="dropbtn" id="dropbtn2" title="font color"><img class="icon icons8-Text-Color" id="textcolorBtnImg" width="20" height="20"></button>
 					<div id="myDropdown2" class="dropdown-content">
@@ -67,10 +67,10 @@
 				<button class="closeBtn" onclick="_close();"><img class="icon icons8-Delete" id="closeBtnImg" width="20" height="20"></button>
 				<div id="advFormatTools">
 					<select class="fontSelection" id="fontFamilySelection">
-						<option value="Arial" style="font-family: Arial">Arial</option>
-						<option value="Comic Sans MS" style="font-family: cursive">Comic Sans MS</option>
-						<option value="sans-serif" style="font-family: sans-serif">Sans Serif</option>
-						<option value="Times New Roman" style="font-family: Times New Roman">Times New Roman</option>
+						<option value="Arial">Arial</option>
+						<option value="Comic Sans MS">Comic Sans MS</option>
+						<option value="sans-serif">Sans Serif</option>
+						<option value="Times New Roman">Times New Roman</option>
 					</select>
 					<input type="number" min="4" max="70" id="fontSizeBox"/>
 
@@ -127,6 +127,16 @@
 
 		<div class="floatingAddColDiv tableBtn" style="display: none;">
 			<button class="toolBtn floatingAddColBtn tableBtn"><img width="20" height="20" class="floatingAddColBtnImg"/></button>
+		</div>
+
+		<div class="styleChooserDiv" style="display: none;">
+
+			<div class="styleContent" style="overflow-y: scroll; height: 100%">
+				<label><img src="css/style/styleprev/style1-preview.png"/><br/>Style 1</label><label><img src="css/style/styleprev/style1-preview.png"/><br/>Style 2</label><label><img src="css/style/styleprev/style1-preview.png"/><br/>Style 3</label>
+			</div>
+			<button id="applyStyle" style="width: 100px; position:absolute; bottom: 0; right: 0; color: white; background-color: #272727; border: 1px solid white; margin: 5px;">Apply</button>
+
+			<button class="toolBtn" style="position:absolute; top: 0; right:0;" id="styleChooserCloseBtn"><img width="20" height="20" class="closeBtnImg"></button>
 		</div>
 
 </body>

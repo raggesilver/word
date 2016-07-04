@@ -1,5 +1,15 @@
 # WYSIWYG Changelog
 
+## Changelog (04 Jul)
+
+![Alt Text](../screenshots/complementar-v0.0.8.png)
+
+* Disabled drag-and-drop due to electron issues
+* Working on styling (document)
+* Working on reading settings from document file (for styling)
+* New button "Styles" came to tool bar
+* Discontinued supporting Windows (until problems in Ubuntu and OS X are solved)
+
 ## Changelog (01 Jul)
 
 * Added table and table tools

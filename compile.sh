@@ -21,7 +21,7 @@ if [[ $distro == "darwin" || $distro == "linux" ]]; then
 	sudo npm i electron-packager -g
 	electron-packager . Node --platform=$distro --arch=$arch
 	if [[ $distro == "darwin" ]]; then
-		mv Nod* /Applications/Node\ WYSIWYG
+		sudo mv Nod* /Applications/Node\ WYSIWYG
 	fi
 	exit 0
 fi
