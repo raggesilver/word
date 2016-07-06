@@ -11,21 +11,21 @@ $(function(){
   var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
   if (isMac) {
       $(".closeBtn").css({
-        "position": "fixed",
-        "left": "3px"
+        "position": "relative",
+        "float": "left"
       });
       $("#menuButton, .menuBtn").css({
-        "position": "fixed",
-        "right": "3px"
+        "position": "relative",
+        "float": "right"
       });
     } else {
       $(".closeBtn").css({
-        "position": "fixed",
-        "right": "3px"
+        "position": "relative",
+        "float": "right"
       });
       $("#menuButton, .menuBtn").css({
-        "position": "fixed",
-        "left": "3px"
+        "position": "relative",
+        "float": "left"
       });
     }
 });
@@ -288,7 +288,7 @@ $(window).bind("mouseup", function(e){
   var sel = window.getSelection();
   var r = sel.getRangeAt(0).getBoundingClientRect();
 
-  $("#floatFormatBox").css( {position:"absolute", top:r.top - $("#floatFormatBox").outerHeight(), left: r.left + r.width / 2 - $("#floatFormatBox").width() / 2});
+  $("#floatFormatBox").css( {position:"absolute", top:e.pageY - $("#floatFormatBox").outerHeight(), left: r.left + r.width / 2 - $("#floatFormatBox").width() / 2});
 
   //$("#floatFormatBox").css( {position:"absolute", top:e.pageY - 40, left: e.pageX});
 
@@ -393,9 +393,13 @@ window.onbeforeunload = function(){
   setSettings();
 }
 
+/* Disabled, being replaced by new system in loading page
+
 $(function(){
   recoverSession();
 });
+
+*/
 
 /* table functions */
 // Please detect when table is deleted

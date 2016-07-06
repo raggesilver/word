@@ -1,0 +1,255 @@
+body {
+    background: #333;
+}
+
+* {font-family: sans-serif;outline: none;}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.preloader {
+  position: absolute;
+  margin: -48px 0 0 -48px;
+  display: block;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border: 3px solid #eb1777;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  animation-delay:0.2s
+}
+
+.preloader:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border: 3px solid #3bb4e5;
+  top: 50%;
+  left: 50%;
+  margin: -32px 0 0 -32px;
+  border-radius: 50%;
+  animation-delay:0.4s
+}
+
+.preloader:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 3px solid #ccdc25;
+  width: 26px;
+  height: 26px;
+  top: 50%;
+  left: 50%;
+  margin: -16px 0 0 -16px;
+  border-radius: 50%;
+  animation-delay:0.6s
+}
+
+.preloader,
+.preloader:before,
+.preloader:after {
+  animation-name: Scale;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  -webkit-animation-name: Scale;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+}
+
+@keyframes Scale {
+  25% {
+    transform: scale(-1.2, 1.2)
+  }
+  50% {
+    transform: scale(-1, -1)
+  }
+  75% {
+    transform: scale(1.2, -1.2)
+  }
+  100% {transform: scale(1, 1)}
+}
+
+@-webkit-keyframes Scale {
+  25% {
+    -webkit-transform: scale(-1.2, 1.2)
+  }
+  50% {
+    -webkit-transform: scale(-1, -1)
+  }
+  75% {
+    -webkit-transform: scale(1.2, -1.2)
+  }
+}
+
+.welcomeDiv {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 100%;
+    text-align: center;
+
+    -webkit-user-select: none;
+}
+
+button {
+    font-family: 'Lato', sans-serif;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+}
+
+.blur{
+    background-color: rgba(255,255,255,.7);
+    width: 175px;
+    height: 300px;
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.newDoc {
+    width: 175px;
+    height: 300px;
+    background-color: white;
+    color: black;
+    transition: .2s;
+    margin: 0;
+    border: none;
+}
+
+.newDoc:hover {
+    transform: scale(1.2);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    margin-top: 20px;
+}
+
+.gitLink {
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+    border: none;
+    transition: .3s;
+}
+
+.gitLink:hover {
+    transform: scale(1.2);
+}
+
+.recoveryFilesDiv {
+  margin-top: 1cm;
+}
+
+.input-group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 10px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:2px solid #404040;
+  background: none;
+  color: #fff;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.input-group label 				 {
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#2196f3;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:0px;
+  position:absolute;
+  background:#2196f3;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#2196f3; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#2196f3; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#2196f3; }
+  to 	{ width:0; background:transparent; }
+}

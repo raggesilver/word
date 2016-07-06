@@ -11,11 +11,13 @@ app.on('ready', function(){
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 600,
-		frame: false
+		frame: false,
+		icon: "logo.png"
+
 	});
 
-	mainWindow.loadUrl('file://' + __dirname + '/index.html');
-	mainWindow.on('closed', function () {
+	mainWindow.loadUrl('file://' + __dirname + '/welcome.html');
+	mainWindow.on('window-all-closed', function () {
 		mainWindow = null;
 		app.quit();
 	});

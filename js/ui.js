@@ -8,13 +8,14 @@ function isDarkMode(){return darkMode;}
 
 function setMode(){
   if ($("#darkModeSwitch").is(":checked")){
-    setDarkMode();
+    /*setDarkMode();
     darkMode = true;
     var oldStyle = document.getElementsByTagName("link").item(0);
     var ls = document.createElement('link');
     ls.rel="stylesheet";
     ls.href= "css/" + "dark.css";
-    document.getElementsByTagName('head')[0].replaceChild(ls, oldStyle);
+    document.getElementsByTagName('head')[0].replaceChild(ls, oldStyle);*/
+    return;
   } else {
     setNormalMode();
     darMode = false;

@@ -30,7 +30,7 @@
 			</div>-->
 			<div class="toolBar">
 				<button id="menuButton" class="menuBtn" title="Menu"><img class="icon icons8-Menu" id="menuBtnImg" width="20" height="20"></button>
-				<div id="advTools" style="display: inline">
+				<div id="advTools" style="display: none">
 					<button class="toolBtn" title="open (ctrl + o)" id="openBtn" onclick="testOpen();"><img class="icon icons8-Open-Folder" id="openBtnImg" width="20" height="20"></button>
 					<button class="toolBtn" title="save (ctrl + s)" id="saveBtn" onclick="testSave();"><img class="icon icons8-Save-as" id="saveBtnImg" width="20" height="20"></button>
 					<button class="toolBtn" title="PDF" id="pdfBtn" onclick="generatePDF();"><img class="icon icons8-PDF" id="pdfBtnImg" width="20" height="20"></button>
@@ -64,7 +64,13 @@
 				<button id="undo" class="toolBtn" title="undo"><img class="icon icons8-Undo" id="undoBtnImg" width="20" height="20"></button><button id="redo" class="toolBtn" title="redo"><img class="icon icons8-Redo" id="redoBtnImg" width="20" height="20"></button>
 				<button id="bulletPoints" class="toolBtn" title="bullet points"><img class="icon icons8-Bulleted-List" id="bulletBtnImg" width="20" height="20"></button><button id="numberPoints" class="toolBtn" title="number points"><img class="icon icons8-Numbered-List" id="numberBtnImg" width="20" height="20"></button>
 				<button class="toolBtn" onclick="toggleAdvFormat();"><img class="icon icons8-Expand-Arrow" width="20" height="20" style="-webkit-transform:rotate(360deg) " id="advFormatToolsBtnImg"></button>
+
+
+
 				<button class="closeBtn" onclick="_close();"><img class="icon icons8-Delete" id="closeBtnImg" width="20" height="20"></button>
+
+
+
 				<div id="advFormatTools">
 					<select class="fontSelection" id="fontFamilySelection">
 						<option value="Arial">Arial</option>
@@ -84,7 +90,7 @@
 
 		</div>
 
-		<p style="text-align: center;" id="thankNote"><a href="http://github.com/raggesilver/WYSIWYG" target="_blank">~GitHub~</a></p>
+		<!--<p style="text-align: center;" id="thankNote"><a href="http://github.com/raggesilver/WYSIWYG" target="_blank">~GitHub~</a></p>-->
 
 		<div id="floatFormatBox" style="display: none; box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.3);">
 			<div style="display: inline;">
