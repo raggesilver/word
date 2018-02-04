@@ -28,45 +28,44 @@
 <body>
 
 	<div class="outer-container">
-		<div class="titlebar">
 
-			<button class="float-left window-menu-button">
-				<i class="ti-menu"></i>
-			</button>
+		<div class="titlebar-wrapper">
+			<div class="titlebar">
 
-			<button class="float-left w-auto px-3">
-				<i class="ti-save"></i>
-			</button>
+				<button onclick="_close()" class=" window-close-button window-action">
+					<i class="ti-close"></i>
+				</button>
 
-			<button onclick="_print()" class="float-left w-auto px-3">
-				<i class="ti-printer"></i>
-			</button>
+				<button onclick="maximize()" class=" window-maximize-button window-action">
+					<i class="ti-layout-width-full"></i>
+				</button>
 
-			<button class="float-left w-auto px-3">
-				<i class="ti-export"></i>
-			</button>
+				<button onclick="minimize()" class=" window-minimize-button window-action">
+					<i class="ti-minus"></i>
+				</button>
 
-			<button onclick="_close()" class="float-right window-close-button">
-				<i class="ti-close"></i>
-			</button>
+				<button class=" w-auto px-3">
+					<i class="ti-save"></i>
+				</button>
 
-			<button onclick="maximize()" class="float-right window-maximize">
-				<i class="ti-layout-width-full"></i>
-			</button>
+				<button onclick="_print()" class=" w-auto px-3">
+					<i class="ti-printer"></i>
+				</button>
 
-			<button onclick="minimize()" class="float-right window-close-button">
-				<i class="ti-minus"></i>
-			</button>
+				<button class=" w-auto px-3">
+					<i class="ti-export"></i>
+				</button>
 
-			<button class="float-right toolbar-toggler">
-				<i class="ti-more"></i>
-			</button>
+				<button class="toolbar-toggler">
+					<i class="ti-more"></i>
+				</button>
 
-			<button onclick="_reload()" class="float-right">
-				<i class="ti-reload"></i>
-			</button>
+				<button onclick="_reload()" class="">
+					<i class="ti-reload"></i>
+				</button>
 
 
+			</div>
 		</div>
 
 		<div class="wrapper">
@@ -209,15 +208,15 @@
 				<button class="" style="margin-left: 10px;">
 					<i class="ti-align-left"></i>
 				</button>
-	
+
 				<button class="">
 					<i class="ti-align-center"></i>
 				</button>
-	
+
 				<button class="">
 					<i class="ti-align-right"></i>
 				</button>
-	
+
 				<button class="">
 					<i class="ti-align-justify"></i>
 				</button>
@@ -275,10 +274,13 @@
 
 			});
 
+			if (!currentWindow.custom.window_action_layout_to_left) {
+				$('.titlebar').addClass('right');
+			}
+
 			var editor = new Editor();
 
 		})();
-
 	</script>
 
 </body>

@@ -1,21 +1,21 @@
 {
-	"name": "office",
+	"name": "word-clone",
 	"version": "1.0.0",
-	"description": "My office",
+	"description": "My MS Word clone",
 	"main": "app.js",
 	"scripts": {
 		"start": "electron ."
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/raggesilver/PimOffice.git"
+		"url": "git+https://github.com/raggesilver/word.git"
 	},
-	"author": "",
+	"author": "Paulo Queiroz",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/raggesilver/PimOffice/issues"
+		"url": "https://github.com/raggesilver/word/issues"
 	},
-	"homepage": "https://github.com/raggesilver/PimOffice#readme",
+	"homepage": "https://github.com/raggesilver/word#readme",
 	"dependencies": {
 		"desktop-env": "^1.0.0",
 		"electron": "^1.7.12"

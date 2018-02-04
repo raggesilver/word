@@ -29,7 +29,22 @@ desktopEnv().then(data => {
 
 		mainWindow.custom = {
 			debug: (process.env.DEBUG === 'true'),
-			de: data
+			de: data,
+			window_action_layout_to_left: (()=>{
+
+				if(data.toLowerCase() == 'gnome') {
+
+					const { execSync } = require('child_process');
+					var cmd = execSync('gsettings get org.gnome.desktop.wm.preferences button-layout');
+
+					return (cmd[0] != ':');
+
+				} else if (data.toLowerCase() == 'darwin') {
+					return true;
+				}
+
+				return false;
+			})()
 		}
 	
 		// Load html

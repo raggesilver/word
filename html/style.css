@@ -99,8 +99,29 @@ button {
 	width: 100%;
 	height: 45px;
 	background: #45399C;
-	display: block;
+	display: flex;
+	flex: 1;
 	z-index: 1030;
+}
+
+.titlebar .toolbar-toggler {
+	margin-left: auto;
+}
+
+.titlebar.right .window-close-button {
+	order: 4;
+}
+
+.titlebar.right .window-maximize-button {
+	order: 3;
+}
+
+.titlebar.right .window-minimize-button {
+	order: 2;
+}
+
+.titlebar.right .toolbar-toggler {
+	order: 1;
 }
 
 .titlebar button {
