@@ -1,0 +1,24 @@
+{
+	"name": "office",
+	"version": "1.0.0",
+	"description": "My office",
+	"main": "app.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/raggesilver/PimOffice.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/raggesilver/PimOffice/issues"
+	},
+	"homepage": "https://github.com/raggesilver/PimOffice#readme",
+	"dependencies": {
+		"desktop-env": "^1.0.0",
+		"electron": "^1.7.12"
+	},
+	"devDependencies": {}
+}
