@@ -32,16 +32,16 @@
 		<div class="titlebar-wrapper">
 			<div class="titlebar">
 
-				<button onclick="_close()" class=" window-close-button window-action">
+				<button onclick="_close()" class=" window-close-button window-action button titlebutton close">
 					<i class="ti-close"></i>
 				</button>
 
-				<button onclick="maximize()" class=" window-maximize-button window-action">
-					<i class="ti-layout-width-full"></i>
+				<button onclick="minimize()" class=" window-minimize-button window-action button titlebutton minimize">
+					<i class="ti-minus"></i>
 				</button>
 
-				<button onclick="minimize()" class=" window-minimize-button window-action">
-					<i class="ti-minus"></i>
+				<button onclick="maximize()" class=" window-maximize-button window-action button titlebutton maximize">
+					<i class="ti-layout-width-full"></i>
 				</button>
 
 				<button class=" w-auto px-3">
@@ -56,12 +56,12 @@
 					<i class="ti-export"></i>
 				</button>
 
-				<button class="toolbar-toggler">
-					<i class="ti-more"></i>
+				<button onclick="_reload()" class="debug-reload">
+					<i class="ti-reload"></i>
 				</button>
 
-				<button onclick="_reload()" class="">
-					<i class="ti-reload"></i>
+				<button class="toolbar-toggler">
+					<i class="ti-more"></i>
 				</button>
 
 
@@ -276,6 +276,17 @@
 
 			if (!currentWindow.custom.window_action_layout_to_left) {
 				$('.titlebar').addClass('right');
+			}
+
+			if(currentWindow.custom.gtk_theme_path) {
+				var link = document.createElement( "link" );
+				link.href = "output/gtk.css";
+				link.type = "text/css";
+				link.rel = "stylesheet";
+				link.media = "screen,print";
+				document.getElementsByTagName( "head" )[0].appendChild( link );
+
+				$('.close, .minimize, .maximize').html('').addClass('custom');
 			}
 
 			var editor = new Editor();
