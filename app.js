@@ -121,7 +121,7 @@ desktopEnv().then(function(data) {
 								fs.removeSync(join(__dirname, 'html', 'output', 'assets'));
 							}
 						} catch (e) {
-							
+
 						}
 
 						fs.ensureDirSync(__dirname, 'html', 'output', 'assets');
@@ -135,6 +135,9 @@ desktopEnv().then(function(data) {
 				console.log('Could not read theme');
 				console.log(e);
 			}
+
+			var cmd = execSync('python3 python/test.py');
+			var custom = JSON.parse(fs.readFileSync('custom.json', 'utf8'));
 
 			if(mainWindow.custom.gtk_theme_path) {
 
@@ -186,24 +189,24 @@ desktopEnv().then(function(data) {
 							} else {
 								// Fallback using icons
 
-								var cmd = execSync('python3 python/test.py');
-
 								if(fs.accessSync('custom.json', fs.F_OK | fs.R_OK)) {
 									return console.error('Fuck this shit');
 								} else {
-									var custom = JSON.parse(fs.readFileSync('custom.json', 'utf8'));
 
 									actual_css += `
 										.close {
-											background-image: url(file://${custom.close_btn_path}) !important;
+											-webkit-mask: url(file://${custom.close_btn_path}) no-repeat 50% 50%;
+											background-color: ${custom.fg_color} !important;
 										}
 
 										.minimize {
-											background-image: url(file://${custom.minimize_btn_path}) !important;
+											-webkit-mask: url(file://${custom.minimize_btn_path}) no-repeat 50% 50%;
+											background-color: ${custom.fg_color} !important;
 										}
 
 										.maximize {
-											background-image: url(file://${custom.maximize_btn_path}) !important;
+											-webkit-mask: url(file://${custom.maximize_btn_path}) no-repeat 50% 50%;
+											background-color: ${custom.fg_color} !important;
 										}
 									`;
 
@@ -223,6 +226,93 @@ desktopEnv().then(function(data) {
 							var matches = a.match(new RegExp('[.]*url\([^\)]*\)', 'gm'));
 							return 'background-image: ' + matches[0] + '); }';
 						});
+
+						if(process.env.COMPLETEGTK) {
+							actual_css += `
+								.titlebar {
+									background-color: ${custom.titlebar_background};
+								}
+
+								.titlebar button {
+									color: ${custom.fg_color};
+								}
+
+								.titlebar button:hover {
+									background-color: ${custom.titlebutton_hover};
+								}
+
+								.print-button .native-icon {
+									-webkit-mask: url(file://${(function(){
+										for (var l = 0; l < custom.icons.length; l++) {
+											if(custom.icons[l].icon == 'document-print') {
+												return custom.icons[l].path;
+											}
+										}
+									})()}) no-repeat 50% 50%;
+									background-color: ${custom.fg_color} !important;
+									display: block;
+								}
+								.print-button i {display: none;}
+
+								.save-button .native-icon {
+									-webkit-mask: url(file://${(function(){
+										for (var l = 0; l < custom.icons.length; l++) {
+											if(custom.icons[l].icon == 'document-save') {
+												return custom.icons[l].path;
+											}
+										}
+									})()}) no-repeat 50% 50%;
+									background-color: ${custom.fg_color} !important;
+									display: block;
+								}
+								.save-button i {display: none;}
+
+								.toolbar-toggler .native-icon {
+									-webkit-mask: url(file://${(function(){
+										for (var l = 0; l < custom.icons.length; l++) {
+											if(custom.icons[l].icon == 'view-more') {
+												return custom.icons[l].path;
+											}
+										}
+									})()}) no-repeat 50% 50%;
+									background-color: ${custom.fg_color} !important;
+									display: block;
+								}
+								.toolbar-toggler i {display: none;}
+
+								.debug-reload .native-icon {
+									-webkit-mask: url(file://${(function(){
+										for (var l = 0; l < custom.icons.length; l++) {
+											if(custom.icons[l].icon == 'view-refresh') {
+												return custom.icons[l].path;
+											}
+										}
+									})()}) no-repeat 50% 50%;
+									background-color: ${custom.fg_color} !important;
+									display: block;
+								}
+								.debug-reload i {display: none;}
+
+								.titlebar button {
+									height: auto !important;
+								    margin: 7px 5px;
+								    padding-left: 5px !important;
+								    padding-right: 5px !important;
+								    border-radius: 2px;
+								}
+
+								.native {
+									display: initial;
+								}
+
+								.divider {
+									border-color: ${custom.fg_color};
+								}
+							`;
+
+							// console.log(custom.icons);
+
+						}
 
 						// Writing to the output file
 						write(join(output_path, file_name), actual_css, "utf8");

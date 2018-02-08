@@ -9,12 +9,19 @@ class Window(Gtk.Window):
 	def __init__(self):
 		super(Window, self).__init__()
 
-		# self.set_default_size(800,350)
-
 		self.hb = Gtk.HeaderBar()
 		self.hb.set_show_close_button(True)
 		self.hb.set_title('Testing for Word Clone')
 		self.set_titlebar(self.hb)
+
+		self.required_icons = [
+			'document-print',
+			'document-save',
+			'view-more',
+			'view-refresh'
+		];
+
+		print(self.required_icons)
 
 		b = Gtk.Button.new_from_icon_name('window-close-symbolic', Gtk.IconSize.MENU)
 
@@ -26,13 +33,15 @@ class Window(Gtk.Window):
 		self.add(self.img)
 
 		ctx = self.get_style_context()
-		# a = GObject.Value
-		# print(ctx.get_style_property('close', a))
-		# print(a)
 
 		config = {}
 
+		config['fg_color'] = self.hb.get_style_context().get_color(Gtk.StateFlags.NORMAL).to_string()
+
+		config['titlebutton_hover'] = b.get_style_context().get_background_color(Gtk.StateFlags.PRELIGHT).to_string()
+
 		config['background'] = ctx.get_background_color(Gtk.StateFlags.NORMAL).to_string()
+
 		config['titlebar_background'] = self.hb.get_style_context().get_background_color(Gtk.StateFlags.NORMAL).to_string()
 
 		k = self.it.lookup_icon('window-close-symbolic', Gtk.IconSize.MENU, Gtk.StateFlags.NORMAL)
@@ -44,8 +53,14 @@ class Window(Gtk.Window):
 		f = self.it.lookup_icon('window-maximize-symbolic', Gtk.IconSize.MENU, Gtk.StateFlags.NORMAL)
 		config['maximize_btn_path'] = f.get_filename()
 
+		h = self.get_icons()
+		print(h)
+		if h:
+			config['icons'] = h
+		else:
+			print('NOT ICONS')
+
 		with open('custom.json', 'w+') as f:
-			print('askdmklasmdlaksmdlaksmdlaksmdlkasm')
 			print(config)
 			json.dump(config, f)
 			f.close()
@@ -58,4 +73,22 @@ class Window(Gtk.Window):
         #
 		# Gtk.main()
 
+	def get_icons(self, *args):
+
+		print('Called')
+
+		icons = []
+
+		for x in range(len(self.required_icons)):
+			ic = self.it.lookup_icon(self.required_icons[x] + '-symbolic', Gtk.IconSize.MENU, Gtk.StateFlags.NORMAL)
+
+			if ic:
+				icons.append({'icon': self.required_icons[x], 'path': ic.get_filename()})
+			else:
+				print('Could not load required icon ' + self.required_icons[x])
+				return False
+
+		return icons
+
+print('Called')
 a = Window()
