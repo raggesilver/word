@@ -5,6 +5,7 @@
 
 ### "Features"
 
-- Kind of "detects" gtk theme and copies the necessary css to make the window actions look like the user's selected theme (only works on gnome tho)
+- Gtk integration somewhat works
+- Basic core features (b,u,i, Header, paragraph, aligning)
 
-Absolutly nothing works... yet
+Almos nothing works...
