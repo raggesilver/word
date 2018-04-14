@@ -4,7 +4,9 @@
 	"description": "My MS Word clone",
 	"main": "app.js",
 	"scripts": {
-		"start": "electron ."
+		"start": "electron .",
+		"start-linux": "electron . --enable-transparent-visuals --disable-gpu",
+		"start-linux-debug": "DEBUG=true COMPLETEGTK=true electron . --enable-transparent-visuals --disable-gpu"
 	},
 	"repository": {
 		"type": "git",
@@ -18,7 +20,7 @@
 	"homepage": "https://github.com/raggesilver/word#readme",
 	"dependencies": {
 		"desktop-env": "^1.0.0",
-		"electron": "^1.7.12",
+		"electron": "1.4.14",
 		"fs-extra": "^5.0.0",
 		"get-gtk-icon": "^1.0.1",
 		"path": "^0.12.7",

@@ -52,6 +52,61 @@ function copyFolderRecursiveSync( source, target ) {
     }
 }
 
+function copy_theme(theme, user, mainWindow) {
+
+	var paths = [`/home/${user}/.themes/${theme}`, `/usr/share/themes/${theme}`];
+
+	let mode = fs.F_OK | fs.R_OK;
+
+	var seeking = true;
+	var counter = 0;
+
+	while (seeking && counter <= (paths.length - 1)) {
+
+		var a = paths[counter];
+
+		try {
+
+			if(!fs.accessSync(a, mode)) {
+
+				seeking = false;
+				console.log(`Found theme on ${a}`);
+
+				// If there is a gtk3-0 folder inside it
+				if(fs.accessSync(`${a}/gtk-3.0`, mode)) {
+					mainWindow.custom.gtk_theme_path = a;
+				} else {
+					mainWindow.custom.gtk_theme_path = `${a}/gtk-3.0`;
+				}
+
+				if(!fs.accessSync(join(mainWindow.custom.gtk_theme_path, 'assets'), mode)) {
+
+					try {
+						if(!fs.accessSync(join(__dirname, 'html', 'output', 'assets'), mode)) {
+							fs.removeSync(join(__dirname, 'html', 'output', 'assets'));
+						}
+					} catch (e) {
+
+					}
+
+					fs.ensureDirSync(__dirname, 'html', 'output', 'assets');
+					fs.copySync(join(mainWindow.custom.gtk_theme_path, 'assets'), join(__dirname, 'html', 'output', 'assets'));
+
+				}
+
+			}
+
+		} catch (e) {
+			console.log('Could not read theme');
+			console.log(e);
+		}
+
+		counter++;
+
+	}
+
+}
+
 desktopEnv().then(function(data) {
 
 	console.log(data);
@@ -67,13 +122,17 @@ desktopEnv().then(function(data) {
 		app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1');
 	}
 
+	// app.disableHardwareAcceleration();
+
 	// Listen for the app to be ready
 	app.on('ready', () => {
 		// Create main window
+
 		mainWindow = new BrowserWindow({
 			height: 500,
 			width: 1050,
-			frame: false
+			frame: false,
+			transparent: true
 		});
 
 		mainWindow.custom = {
@@ -98,43 +157,11 @@ desktopEnv().then(function(data) {
 		if (data.toLowerCase() == 'gnome' && !process.env.NOGTKCSS) {
 			// gsettings get org.gnome.desktop.interface gtk-theme
 
-			var cmd = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString().replace(/\'/g, '').trim();
+			var __theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString().replace(/\'/g, '').trim();
 
-			var a = '/usr/share/themes/' + cmd;
+			var __user = execSync('whoami').toString().replace(/\'/g, '').trim();
 
-			let mode = fs.F_OK | fs.R_OK;
-
-			try {
-
-				if(!fs.accessSync(a, mode)) {
-					// If there is a gtk3-0 folder inside it
-					if(fs.accessSync(`${a}/gtk-3.0`, mode)) {
-						mainWindow.custom.gtk_theme_path = a;
-					} else {
-						mainWindow.custom.gtk_theme_path = `${a}/gtk-3.0`;
-					}
-
-					if(!fs.accessSync(join(mainWindow.custom.gtk_theme_path, 'assets'), mode)) {
-
-						try {
-							if(!fs.accessSync(join(__dirname, 'html', 'output', 'assets'), mode)) {
-								fs.removeSync(join(__dirname, 'html', 'output', 'assets'));
-							}
-						} catch (e) {
-
-						}
-
-						fs.ensureDirSync(__dirname, 'html', 'output', 'assets');
-						fs.copySync(join(mainWindow.custom.gtk_theme_path, 'assets'), join(__dirname, 'html', 'output', 'assets'));
-
-					}
-
-				}
-
-			} catch (e) {
-				console.log('Could not read theme');
-				console.log(e);
-			}
+			copy_theme(__theme, __user, mainWindow);
 
 			var cmd = execSync('python3 python/test.py');
 			var custom = JSON.parse(fs.readFileSync('custom.json', 'utf8'));
@@ -172,42 +199,48 @@ desktopEnv().then(function(data) {
 						const output_dir = output_path.replace(/[\/\\][^\/\\]+$/, "");
 						mkdirp.sync(output_dir);
 
-						var find = ['.close', '.minimize', '.maximize'];
+						var find = ['button.titlebutton.close', 'button.titlebutton.minimize', 'button.titlebutton.maximize', 'headerbar,\n\.titlebar:not\\(headerbar\\)'];
 
 						var actual_css = '';
 
 						// Grabbing only what is needed and appending to actual_css
 						find.forEach((el) => {
-							var r = new RegExp("[\}\n](.*\n)?.*(\." + el +").*{(\n)?.*}", 'gm');
+							var  r = new RegExp("[a-zA-Z. #-_:]*(" + el.replace('.', '\.') + ")([^\{]*)?{(\n)?([^\}]*(\n)?)+}", "gm");
 
 							var matches = gtk_css.match(r) || [];
+							console.log(matches);
+							console.log(JSON.stringify(r.toString()));
 
 							if(matches.length > 0) {
 								for(var k = 0; k < matches.length; k++) {
-									actual_css += matches[k];
+									actual_css += matches[k] + '\n';
+									// console.log(matches[k]);
 								}
 							} else {
 								// Fallback using icons
+								console.log('No match for ' + el);
 
 								if(fs.accessSync('custom.json', fs.F_OK | fs.R_OK)) {
 									return console.error('Fuck this shit');
 								} else {
 
+									console.log("WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY?");
+
 									actual_css += `
-										.close {
-											-webkit-mask: url(file://${custom.close_btn_path}) no-repeat 50% 50%;
-											background-color: ${custom.fg_color} !important;
-										}
+.close {
+	-webkit-mask: url(file://${custom.close_btn_path}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+}
 
-										.minimize {
-											-webkit-mask: url(file://${custom.minimize_btn_path}) no-repeat 50% 50%;
-											background-color: ${custom.fg_color} !important;
-										}
+.minimize {
+	-webkit-mask: url(file://${custom.minimize_btn_path}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+}
 
-										.maximize {
-											-webkit-mask: url(file://${custom.maximize_btn_path}) no-repeat 50% 50%;
-											background-color: ${custom.fg_color} !important;
-										}
+.maximize {
+	-webkit-mask: url(file://${custom.maximize_btn_path}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+}
 									`;
 
 
@@ -222,92 +255,108 @@ desktopEnv().then(function(data) {
 						// change to [.]*url\([^\)]*\)
 
 						// Converting the GTK Css to Web Browser Css
-						actual_css = actual_css.replace(new RegExp('background-image: -gtk-scaled\(.*\)', 'gm'), function(a) {
-							var matches = a.match(new RegExp('[.]*url\([^\)]*\)', 'gm'));
-							return 'background-image: ' + matches[0] + '); }';
+
+						var convertions = [
+							{
+								_find_reg: new RegExp('(\.){0}headerbar', 'gm'),
+								_replace_function: function(a) {
+									return '.titlebar'
+								}
+							},
+							{
+								_find_reg: new RegExp('background-image: -gtk-scaled\(.*\);', 'gm'),
+								_replace_function: function(a) {
+									var matches = a.match(new RegExp('[.]*url\([^\)]*\)', 'gm'));
+									return 'background-image: ' + matches[0] + ');';
+								}
+							}
+						];
+
+						convertions.forEach(convert => {
+							actual_css = actual_css.replace(convert._find_reg, function(a){return convert._replace_function(a)});
 						});
 
 						if(process.env.COMPLETEGTK) {
 							actual_css += `
-								.titlebar {
-									background-color: ${custom.titlebar_background};
-								}
+.titlebar {
+	background-color: ${custom.titlebar_background};
+}
 
-								.titlebar button {
-									color: ${custom.fg_color};
-								}
+.titlebar button {
+	color: ${custom.fg_color};
+}
 
-								.titlebar button:hover {
-									background-color: ${custom.titlebutton_hover};
-								}
+.titlebar button:hover {
+	background-color: ${custom.titlebutton_hover};
+}
 
-								.print-button .native-icon {
-									-webkit-mask: url(file://${(function(){
-										for (var l = 0; l < custom.icons.length; l++) {
-											if(custom.icons[l].icon == 'document-print') {
-												return custom.icons[l].path;
-											}
-										}
-									})()}) no-repeat 50% 50%;
-									background-color: ${custom.fg_color} !important;
-									display: block;
-								}
-								.print-button i {display: none;}
+.print-button .native-icon {
+	-webkit-mask: url(file://${(function(){
+		for (var l = 0; l < custom.icons.length; l++) {
+			if(custom.icons[l].icon == 'document-print') {
+				return custom.icons[l].path;
+			}
+		}
+	})()}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+	display: block;
+}
+.print-button i {display: none;}
 
-								.save-button .native-icon {
-									-webkit-mask: url(file://${(function(){
-										for (var l = 0; l < custom.icons.length; l++) {
-											if(custom.icons[l].icon == 'document-save') {
-												return custom.icons[l].path;
-											}
-										}
-									})()}) no-repeat 50% 50%;
-									background-color: ${custom.fg_color} !important;
-									display: block;
-								}
-								.save-button i {display: none;}
+.save-button .native-icon {
+	-webkit-mask: url(file://${(function(){
+		for (var l = 0; l < custom.icons.length; l++) {
+			if(custom.icons[l].icon == 'document-save') {
+				return custom.icons[l].path;
+			}
+		}
+	})()}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+	display: block;
+}
+.save-button i {display: none;}
 
-								.toolbar-toggler .native-icon {
-									-webkit-mask: url(file://${(function(){
-										for (var l = 0; l < custom.icons.length; l++) {
-											if(custom.icons[l].icon == 'view-more') {
-												return custom.icons[l].path;
-											}
-										}
-									})()}) no-repeat 50% 50%;
-									background-color: ${custom.fg_color} !important;
-									display: block;
-								}
-								.toolbar-toggler i {display: none;}
+.toolbar-toggler .native-icon {
+	-webkit-mask: url(file://${(function(){
+		for (var l = 0; l < custom.icons.length; l++) {
+			if(custom.icons[l].icon == 'view-more') {
+				return custom.icons[l].path;
+			}
+		}
+	})()}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+	display: block;
+}
+.toolbar-toggler i {display: none;}
 
-								.debug-reload .native-icon {
-									-webkit-mask: url(file://${(function(){
-										for (var l = 0; l < custom.icons.length; l++) {
-											if(custom.icons[l].icon == 'view-refresh') {
-												return custom.icons[l].path;
-											}
-										}
-									})()}) no-repeat 50% 50%;
-									background-color: ${custom.fg_color} !important;
-									display: block;
-								}
-								.debug-reload i {display: none;}
+.debug-reload .native-icon {
+	-webkit-mask: url(file://${(function(){
+		for (var l = 0; l < custom.icons.length; l++) {
+			if(custom.icons[l].icon == 'view-refresh') {
+				return custom.icons[l].path;
+			}
+		}
+	})()}) no-repeat 50% 50%;
+	background-color: ${custom.fg_color} !important;
+	display: block;
+}
+.debug-reload i {display: none;}
 
-								.titlebar button {
-									height: auto !important;
-								    margin: 7px 5px;
-								    padding-left: 5px !important;
-								    padding-right: 5px !important;
-								    border-radius: 2px;
-								}
+.titlebar button {
+	height: auto !important;
+    margin: 7px 5px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    border-radius: 2px;
+}
 
-								.native {
-									display: initial;
-								}
+.native {
+	display: initial;
+}
 
-								.divider {
-									border-color: ${custom.fg_color};
-								}
+.divider {
+	border-color: ${custom.fg_color};
+}
 							`;
 
 							// console.log(custom.icons);
