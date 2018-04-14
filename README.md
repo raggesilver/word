@@ -1,11 +1,39 @@
-# My MS Word clone
+# Word Clone
+(it doesn't have a name yet)
 
-### Preview
-![Preview](preview.png)
+### Screenshot(s)
+**Editor**
+![Preview](./pictures/preview.png)
+Can't paste images :(
 
-### "Features"
+**Landing page concept**
+![Landing Concept](./pictures/landing-concept.png)
+I am online :P
 
-- Gtk integration somewhat works
-- Basic core features (b,u,i, Header, paragraph, aligning)
+### Install & run
 
-Almos nothing works...
+Standard
+
+```bash
+npm i # Install the required dependencies
+npm run start # No integration
+```
+
+Running on Linux and debugging
+
+```bash
+npm run start-linux # Basic GTK integration if running Gnome
+npm run start-lunux-debug # Complete Gtk integration + degug mode enabled
+```
+
+### Todo
+- FIND A NEW ICON SET!!!
+- Finish core features
+- Figure a way to do tabbing better than Microsoft
+- Improve Gtk integration
+- Do paging
+- Build components (eg.: color picker, font chooser)
+- Create different pages (eg.: landing, save, online account integration )
+- Give up
+
+Almost nothing works...

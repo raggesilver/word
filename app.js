@@ -199,7 +199,11 @@ desktopEnv().then(function(data) {
 						const output_dir = output_path.replace(/[\/\\][^\/\\]+$/, "");
 						mkdirp.sync(output_dir);
 
-						var find = ['button.titlebutton.close', 'button.titlebutton.minimize', 'button.titlebutton.maximize', 'headerbar,\n\.titlebar:not\\(headerbar\\)'];
+						var find = ['button.titlebutton.close', 'button.titlebutton.minimize', 'button.titlebutton.maximize'];
+
+						if(process.env.COMPLETEGTK) {
+							find.push('headerbar,\n\.titlebar:not\\(headerbar\\)');
+						}
 
 						var actual_css = '';
 
@@ -278,7 +282,7 @@ desktopEnv().then(function(data) {
 
 						if(process.env.COMPLETEGTK) {
 							actual_css += `
-.titlebar {
+.titlebar, .title-bg {
 	background-color: ${custom.titlebar_background};
 }
 
@@ -316,7 +320,7 @@ desktopEnv().then(function(data) {
 }
 .save-button i {display: none;}
 
-.toolbar-toggler .native-icon {
+/*.toolbar-toggler .native-icon {
 	-webkit-mask: url(file://${(function(){
 		for (var l = 0; l < custom.icons.length; l++) {
 			if(custom.icons[l].icon == 'view-more') {
@@ -327,7 +331,7 @@ desktopEnv().then(function(data) {
 	background-color: ${custom.fg_color} !important;
 	display: block;
 }
-.toolbar-toggler i {display: none;}
+.toolbar-toggler i {display: none;}*/
 
 .debug-reload .native-icon {
 	-webkit-mask: url(file://${(function(){

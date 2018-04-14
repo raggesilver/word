@@ -11,6 +11,10 @@ body, html {
 	background: transparent;
 }
 
+body.csd {
+	border-radius: 5px;
+}
+
 /* General definitions */
 
 button {
@@ -20,6 +24,31 @@ button {
     border: 1px solid #efeff2;
     color: #232323;
     cursor: pointer;
+	transition: .2s all;
+}
+
+.brand-bg {
+	background-color: #45399C;
+}
+
+.white-bg {
+	background-color: #fff;
+}
+
+.text-white {
+	color: white !important;
+}
+
+.text-dark {
+	color: #232323  !important;
+}
+
+.text-black {
+	color: #000  !important;
+}
+
+.text-grey {
+	color: #565656  !important;
 }
 
 .float-left {
@@ -83,6 +112,36 @@ button {
     padding-right: 2rem !important;
 }
 
+.mx-0 {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.mx-1 {
+    margin-right: .25rem !important;
+	margin-left: .25rem !important;
+}
+
+.mx-2 {
+    margin-right: .5rem !important;
+	margin-left: .5rem !important;
+}
+
+.mx-3 {
+    margin-right: 1rem !important;
+	margin-left: 1rem !important;
+}
+
+.mx-4 {
+    margin-right: 2rem !important;
+	margin-left: 2rem !important;
+}
+
+.mx-5 {
+    margin-right: 4rem !important;
+	margin-left: 4rem !important;
+}
+
 .mr-1 {
     margin-right: .25rem !important;
 }
@@ -101,6 +160,26 @@ button {
 
 .mr-5 {
     margin-right: 4rem !important;
+}
+
+.ml-1 {
+    margin-left: .25rem !important;
+}
+
+.ml-2 {
+    margin-left: .5rem !important;
+}
+
+.ml-3 {
+    margin-left: 1rem !important;
+}
+
+.ml-4 {
+    margin-left: 2rem !important;
+}
+
+.ml-5 {
+    margin-left: 4rem !important;
 }
 
 /* -- */
@@ -154,9 +233,10 @@ button {
     background-color: initial;
 }
 
+/* Not necessary after the implementation of .h-spacer
 .titlebar .debug-reload {
     margin-left: auto;
-}
+} */
 
 .titlebar.right .window-close-button {
     order: 4;
@@ -356,6 +436,18 @@ button {
     transform: translateY(50%);
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.v-spacer {
+	height: 50%;
+    transform: translateY(50%);
+	opacity: 0;
+	width: 5px;
+}
+
+.h-spacer {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .chooser-container {

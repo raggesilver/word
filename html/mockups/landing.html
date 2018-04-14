@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>PimWritter</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../themify-icons.css">
+
+</head>
+
+<body>
+
+	<div class="outer-container landing">
+
+		<div class="titlebar-wrapper">
+			<div class="titlebar" style="border-bottom: none !important; padding-right: 0 !important">
+
+				<button onclick="_close()" class=" window-close-button window-action button titlebutton close">
+					<i class="ti-close"></i>
+				</button>
+
+				<button onclick="minimize()" class=" window-minimize-button window-action button titlebutton minimize">
+					<i class="ti-minus"></i>
+				</button>
+
+				<button onclick="maximize()" class=" window-maximize-button window-action button titlebutton maximize">
+					<i class="ti-layout-width-full"></i>
+				</button>
+
+				<button class="w-auto mx-0 ml-2 px-3">
+					<i class="ti-arrow-left fallback-i"></i>
+					<div class="native-icon"></div>
+				</button>
+
+				<button class="w-auto mx-0 px-3">
+					<i class="ti-cloud-up fallback-i"></i>
+					<div class="native-icon"></div>
+				</button>
+
+				<div class="h-spacer w-100" style="background: white; margin-right: 0; margin-left: auto; width: calc(100% - 242px) !important;"></div>
+
+			</div>
+
+		</div>
+
+		<div class="passge" style="height: 100%;">
+
+			<div style="float: left; width: 250px; height: 100%;" class="title-bg">
+
+				<ul class="landing-side-list">
+					<li class="muted"><a href="#"><big style="font-size: 1.75rem">New</big></a></li>
+					<li><a href="#"><small><i class="ti-file fallback-i" style="margin-right: .4rem"></i></small>New Document</a></li>
+					<li class="muted"><a href="#"><big style="font-size: 1.75rem">Open</big></a></li>
+					<li><a href="#"><small><i class="ti-folder fallback-i" style="margin-right: .4rem"></i></small>Open Document</a></li>
+					<li class="no-break"><a href="#">~/Documents/Work/Assignment.odf</a></li>
+					<li class="no-break"><a href="#">~/Documents/Work/NotAnAssignment.odf</a></li>
+					<li class="no-break"><a href="#">~/Documents/Work/HomeWork.odf</a></li>
+					<li class="muted"><a href="#"><big style="font-size: 1.75rem">Save</big></a></li>
+					<li><a href="#"><small><i class="ti-save-alt fallback-i" style="margin-right: .4rem"></i></small>Save Document</a></li>
+					<li><a href="#"><small><i class="ti-files fallback-i" style="margin-right: .4rem"></i></small>Save Document As</a></li>
+				</ul>
+
+			</div>
+
+			<div style="float: right; width: calc(100% - 250px); height: 100%;" class="white-bg text-grey px-4">
+
+				<h1>Templates</h1>
+
+				<h3>Please go online to fetch some templates</h3>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<style media="screen">
+
+		.landing {
+			font-family: "Cantarell", "DejaVu Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.landing-side-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow-y: auto;
+			-webkit-user-select: none;
+		    user-select: none;
+		}
+
+		.landing-side-list li {
+			width: 100%;
+		}
+
+		.landing-side-list li a {
+			display: block;
+			padding: 8px;
+			padding-left: 20px;
+			color: #c6c6c6;
+			line-height: 1.2;
+			text-decoration: none;
+			word-wrap: break-word;
+		}
+
+		.landing-side-list li.no-break a {
+			word-wrap: normal;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		}
+
+		.landing-side-list li.muted {
+			pointer-events: none;
+		}
+
+		.landing-side-list li:not(.muted):hover {
+			background: rgba(0,0,0,.1);
+		}
+
+	</style>
+
+</body>
+
+<script>
+	if (typeof module === 'object') {
+		window.module = module;
+		module = undefined;
+	}
+</script>
+
+<script src="../jquery.min.js"></script>
+
+<script>
+	if (window.module) module = window.module;
+
+	const remote = require('electron').remote;
+	var currentWindow = remote.getCurrentWindow();
+
+	console.log(currentWindow);
+
+	function _close() {
+		currentWindow.close();
+	}
+
+	function minimize() {
+		currentWindow.minimize();
+	}
+
+	function maximize() {
+
+		if (currentWindow.isMaximized()) {
+			currentWindow.unmaximize();
+		} else {
+			currentWindow.maximize();
+		}
+
+	}
+
+	function _reload() {
+		location.reload();
+	}
+
+	(function () {
+
+		$(document).on('click', '.toolbar-toggler', function () {
+			$('.toolbar').toggleClass('shown');
+		});
+
+		if (!currentWindow.custom.window_action_layout_to_left) {
+			$('.titlebar').addClass('right');
+		}
+
+		if(currentWindow.custom.gtk_theme_path) {
+			var link = document.createElement( "link" );
+			link.href = "../output/gtk.css";
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.media = "screen,print";
+			document.getElementsByTagName( "head" )[0].appendChild( link );
+
+			$('body').addClass('csd');
+			$('.titlebar').addClass('csd');
+			$('.close, .minimize, .maximize').html('').addClass('custom');
+		}
+
+	})();
+
+</script>
+
+</html>

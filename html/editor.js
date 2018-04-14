@@ -1,34 +1,34 @@
 'use strict';
 
 function getSelectedText() {
-    var text = "";
-    if (typeof window.getSelection != "undefined") {
-        text = window.getSelection().toString();
-    } else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
-        text = document.selection.createRange().text;
-    }
-    return text;
+	var text = "";
+	if (typeof window.getSelection != "undefined") {
+		text = window.getSelection().toString();
+	} else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
+		text = document.selection.createRange().text;
+	}
+	return text;
 }
 
 class Editor {
 
-    constructor(element = document.getElementsByClassName('editor-container')[0] || null) {
+	constructor(element = document.getElementsByClassName('editor-container')[0] || null) {
 
-        this.el = element;
-        window.currentSelectedText = '';
-        window.lastSelectedText = '';
+		this.el = element;
+		window.currentSelectedText = '';
+		window.lastSelectedText = '';
 
-		document.execCommand("defaultParagraphSeparator", false, "p");
+		// document.execCommand("defaultParagraphSeparator", false, "p");
 
-        this.bindEvents();
+		this.bindEvents();
 
-    }
+	}
 
-    /* Core functions */
+	/* Core functions */
 
-    apply_bold() {
-        document.execCommand('bold', false, false);
-    }
+	apply_bold() {
+		document.execCommand('bold', false, false);
+	}
 
 	apply_italic() {
 		document.execCommand('italic', false, false);
@@ -46,16 +46,16 @@ class Editor {
 		document.execCommand('justify' + alignment, false, false);
 	}
 
-    /* End of core functions */
+	/* End of core functions */
 
-    bindEvents() {
+	bindEvents() {
 
 		var that = this;
 
-        if (!this.el) return;
+		if (!this.el) return;
 
-        this.el.addEventListener('mouseup', this.onTextSelected, false);
-        this.el.addEventListener('keydown', this.onTextSelected, false);
+		this.el.addEventListener('mouseup', this.onTextSelected, false);
+		this.el.addEventListener('keydown', this.onTextSelected, false);
 
 		$(document).on('click', '.editor-align-left', function() {
 			that.apply_alignment('Left');
@@ -73,12 +73,24 @@ class Editor {
 			that.apply_alignment('Full');
 		});
 
-		$(document).on('click', 'button[class^=editor-format-]', function(){
+		$(document).on('click', '.editor-bold', function() {
+			that.apply_bold();
+		});
+
+		$(document).on('click', '.editor-underline', function() {
+			that.apply_underline();
+		});
+
+		$(document).on('click', '.editor-italic', function() {
+			that.apply_italic();
+		});
+
+		$(document).on('click', 'button[class^=editor-format-]', function() {
 
 			var $btn = $(this);
 
 			$btn.attr('class').split(/\s+/).forEach(function(el, i) {
-				if($btn.attr('class').split(/\s+/)[i].indexOf('editor-format-') != -1) {
+				if ($btn.attr('class').split(/\s+/)[i].indexOf('editor-format-') != -1) {
 					that.apply_header($btn.attr('class').split(/\s+/)[i].replace('editor-format-', ''));
 				}
 			});
@@ -97,9 +109,9 @@ class Editor {
 
 		});
 
-        $(window).on('keypress', function(e) {
+		$(window).on('keypress', function(e) {
 
-            if (e.ctrlKey || e.metaKey) {
+			if (e.ctrlKey || e.metaKey) {
 
 				e.preventDefault();
 
@@ -108,22 +120,22 @@ class Editor {
 				console.log(String.fromCharCode(e.which).toLowerCase());
 
 				// console.log('kasdmlaksdmlasmd');
-                //
-                // switch (String.fromCharCode(e.which).toLowerCase()) {
-                //     case 'b':
+				//
+				// switch (String.fromCharCode(e.which).toLowerCase()) {
+				//     case 'b':
 				// 		console.log(this);
 				// 		this.apply_bold();
-                //         break;
+				//         break;
 				// 	case 'i':
 				// 		this.apply_italic();
 				// 		break;
 				// 	case 'u':
 				// 		this.apply_underline();
 				// 		break;
-                // }
-                //
+				// }
+				//
 				// console.log(this);
-                //
+				//
 				switch (e.which - 16) {
 					case 1:
 					case 2:
@@ -135,50 +147,50 @@ class Editor {
 						break;
 				}
 
-            }
+			}
 
-        });
+		});
 
-    }
+	}
 
-    onTextSelected(e) {
+	onTextSelected(e) {
 
-        if ((e.type == 'keydown' && e.shiftKey && e.which >= 37 && e.which <= 40) || e.type == 'mouseup' || e === 'ctrla') {
+		if ((e.type == 'keydown' && e.shiftKey && e.which >= 37 && e.which <= 40) || e.type == 'mouseup' || e === 'ctrla') {
 
-            window.lastSelectedText = window.currentSelectedText;
-            window.currentSelectedText = getSelectedText();
+			window.lastSelectedText = window.currentSelectedText;
+			window.currentSelectedText = getSelectedText();
 
-            console.log(window.lastSelectedText);
-            console.log(window.currentSelectedText);
+			console.log(window.lastSelectedText);
+			console.log(window.currentSelectedText);
 
-            var $box = $('.selection-toolbox');
+			var $box = $('.selection-toolbox');
 
-            if (window.currentSelectedText !== '' && window.currentSelectedText !== window.lastSelectedText) {
+			if (window.currentSelectedText !== '' && window.currentSelectedText !== window.lastSelectedText) {
 
-                var r = window.getSelection().getRangeAt(0).getBoundingClientRect();
+				var r = window.getSelection().getRangeAt(0).getBoundingClientRect();
 
-                console.log(r);
-                console.log($box.position());
+				console.log(r);
+				console.log($box.position());
 
-                var left = (r.left - ($box.width() / 2) + (r.width / 2));
-                if (left < 10) left = 10;
+				var left = (r.left - ($box.width() / 2) + (r.width / 2));
+				if (left < 10) left = 10;
 
-                $box.css({
-                    left: left + 'px',
-                    // left: (((r.left + (r.width / 2)) - ($box.width() / 2)) > 20 ? ((r.left + (r.width / 2)) - ($box.width() / 2)) : 20) + 'px',
-                    top: (r.top - $box.height() - 30) + 'px'
-                });
+				$box.css({
+					left: left + 'px',
+					// left: (((r.left + (r.width / 2)) - ($box.width() / 2)) > 20 ? ((r.left + (r.width / 2)) - ($box.width() / 2)) : 20) + 'px',
+					top: (r.top - $box.height() - 30) + 'px'
+				});
 
-            } else {
+			} else {
 
-                if (window.currentSelectedText == window.lastSelectedText) window.currentSelectedText = '';
-                $box.css({
-                    top: '-1000px'
-                });
+				if (window.currentSelectedText == window.lastSelectedText) window.currentSelectedText = '';
+				$box.css({
+					top: '-1000px'
+				});
 
-            }
+			}
 
-        } else{
+		} else {
 
 			$('.selection-toolbox').css({
 				top: '-1000px'
@@ -186,7 +198,7 @@ class Editor {
 
 		}
 
-    }
+	}
 
 }
 

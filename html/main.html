@@ -42,15 +42,29 @@
 					<div class="native-icon"></div>
 				</button>
 
-				<!-- <button class=" w-auto px-3">
-					<i class="ti-export fallback-i"></i>
-					<div class="native-icon"></div>
-				</button> -->
+				<div class="v-spacer spacer"></div>
 
-				<button onclick="_reload()" class="debug-reload w-auto px-3">
-					<i class="ti-reload fallback-i"></i>
+				<button class="w-auto px-3">
+					<i class="ti-bar-chart fallback-i"></i>
 					<div class="native-icon"></div>
 				</button>
+
+				<button class="w-auto px-3">
+					<i class="ti-palette fallback-i"></i>
+					<div class="native-icon"></div>
+				</button>
+
+				<div class="h-spacer"></div>
+
+				<button class="w-auto px-3">
+					<i class="ti-cloud-up fallback-i"></i>
+					<div class="native-icon"></div>
+				</button>
+
+				<!-- <button onclick="_reload()" class="debug-reload w-auto px-3">
+					<i class="ti-reload fallback-i"></i>
+					<div class="native-icon"></div>
+				</button> -->
 
 				<button class="toolbar-toggler w-auto mr-2 px-3">
 					<i class="ti-more fallback-i"></i>
@@ -196,15 +210,15 @@
 			<input type="text" class="font-family-input" value="Arial" style="flex: 1; width: 100%;flex-basis: 60%;">
 			<input type="number" class="font-size-input" value="12" min="1" max="72" style="flex: 0 0 auto;width: 100%;flex-basis: 40%;">
 
-			<button>
+			<button class="editor-bold">
 				<big>B</big>
 			</button>
 
-			<button>
+			<button class="editor-underline">
 				<i class="ti-underline"></i>
 			</button>
 
-			<button>
+			<button class="editor-italic">
 				<i class="ti-Italic"></i>
 			</button>
 
@@ -304,6 +318,7 @@
 			link.media = "screen,print";
 			document.getElementsByTagName( "head" )[0].appendChild( link );
 
+			$('body').addClass('csd');
 			$('.titlebar').addClass('csd');
 			$('.close, .minimize, .maximize').html('').addClass('custom');
 		}
