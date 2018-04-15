@@ -7,7 +7,7 @@
 		"start": "electron .",
 		"start-linux": "electron . --enable-transparent-visuals --disable-gpu",
 		"start-linux-debug": "DEBUG=true COMPLETEGTK=true electron . --enable-transparent-visuals --disable-gpu",
-		"test": "mocha"
+		"test": "mocha ."
 	},
 	"repository": {
 		"type": "git",
