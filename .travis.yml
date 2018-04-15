@@ -1,0 +1,10 @@
+language: nodejs
+
+nodejs:
+    - 8.11
+
+before_script:
+    - npm i
+
+script:
+    - npm run test

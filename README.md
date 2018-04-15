@@ -1,4 +1,4 @@
-# Word Clone
+# Word Clone [![Build Status](https://travis-ci.org/raggesilver/word.svg?branch=master)](https://travis-ci.org/raggesilver/word)
 (it doesn't have a name yet)
 
 ### Screenshot(s)
